@@ -358,8 +358,8 @@
        like a PDF. The canvas drops its transform and is shrunk with CSS
        zoom instead (zoom affects layout, so the host scrolls to the real
        extent and position:fixed slide content still pins to the
-       viewport). Toggled by the top-right switch, ?view=scroll|slides,
-       or the stored per-viewer preference. */
+       viewport). On by default; toggled by the top-right switch or
+       ?view=slides. */
     :host([data-scroll]) {
       overflow-y: auto;
       overflow-x: hidden;
@@ -819,7 +819,7 @@
         // stored preference.
         if (this._scrollMode) {
           this._printWasScroll = true;
-          this._setScrollMode(false, { persist: false });
+          this._setScrollMode(false);
         }
         this._syncPrintPageRule();
         // Self-heal: a departed doc-page may have removed the page-global
@@ -836,24 +836,21 @@
         if (this._freezeStyle) { this._freezeStyle.remove(); this._freezeStyle = null; }
         if (this._printWasScroll) {
           this._printWasScroll = false;
-          this._setScrollMode(true, { persist: false });
+          this._setScrollMode(true);
         }
       };
       window.addEventListener('beforeprint', this._onBeforePrint);
       window.addEventListener('afterprint', this._onAfterPrint);
       // Initial collection + layout happens via slotchange, which fires on mount.
       this._enableRail();
-      // Initial view: ?view=scroll|slides wins, then the per-viewer
-      // preference, else the classic one-slide stage. Presenter-popup
-      // thumbnail iframes (_snthumb) always stay in slide mode.
+      // Initial view: the scroll ("лента") view by default, so a shared
+      // link reads top-to-bottom like a PDF; ?view=slides opens the
+      // classic one-slide stage. The switch is per visit (nothing is
+      // stored), so every link opens the same way for everyone.
+      // Presenter-popup thumbnail iframes (_snthumb) stay in slide mode.
       if (!/[?&]_snthumb=/.test(location.search)) {
-        let view = null;
         const q = new URLSearchParams(location.search).get('view');
-        if (q === 'scroll' || q === 'slides') view = q;
-        if (!view) {
-          try { view = localStorage.getItem('deck-stage.view'); } catch (e) {}
-        }
-        if (view === 'scroll') this._setScrollMode(true, { persist: false });
+        if (q !== 'slides') this._setScrollMode(true);
       }
       // Hold the stage hidden until webfonts are ready so the first visible
       // paint has the deck's real typography — the :not(:defined) guard in
@@ -1592,13 +1589,10 @@
 
     // ── Scroll ("лента") view ─────────────────────────────────────────────
 
-    _setScrollMode(on, { persist = true } = {}) {
+    _setScrollMode(on) {
       on = !!on;
       if (on === this._scrollMode) return;
       this._scrollMode = on;
-      if (persist) {
-        try { localStorage.setItem('deck-stage.view', on ? 'scroll' : 'slides'); } catch (e) {}
-      }
       if (on) {
         this.setAttribute('data-scroll', '');
         this.addEventListener('scroll', this._onScroll, { passive: true });
