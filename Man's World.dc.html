@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:auto}
+body{margin:0;background:#000;color:#ECEEEE;font-family:'Golos Text',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box}
+a{color:#ECEEEE;text-decoration:none}
+a:hover{color:#fff}
+button{font-family:inherit}
+input,textarea{font-family:inherit}
+@keyframes mwSheet{from{transform:translateX(28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes mwFade{from{opacity:0}to{opacity:1}}
+@keyframes mwUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+</style>
+</helmet>
+
+<sc-if value="{{ mobileFrame }}" hint-placeholder-val="{{ false }}">
+  <div style="min-height:100svh;background:#0B1114;display:flex;align-items:center;justify-content:center;padding:32px 16px">
+    <div style="width:390px;max-width:100%;height:min(844px,calc(100svh - 64px));background:#000;border-radius:44px;border:10px solid #1A2226;box-shadow:0 30px 80px rgba(0,0,0,0.6),inset 0 0 0 1px rgba(236,238,238,0.08);overflow:hidden;position:relative">
+      <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);width:110px;height:30px;background:#1A2226;border-radius:16px;z-index:2"></div>
+      <iframe src="{{ frameSrc }}" title="Мобильная версия Man's World" style="width:100%;height:100%;border:0;display:block;background:#000"></iframe>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ pageVisible }}" hint-placeholder-val="{{ true }}">
+<header style="position:sticky;top:0;z-index:40;background:rgba(0,0,0,0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(236,238,238,0.1)">
+  <div style="max-width:1280px;margin:0 auto;height:64px;padding:0 clamp(14px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" onClick="{{ goTop }}" style="display:flex;align-items:center;height:64px" aria-label="Man's World — наверх">
+      <img src="assets/logo.jpg" alt="Man's World" style="width:46px;height:46px;display:block"></img>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:32px;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:#A3ACAF">
+        <a href="#services" onClick="{{ goServices }}" style="color:#A3ACAF" style-hover="color:#fff">Услуги и цены</a>
+        <a href="#atmos" onClick="{{ goAtmos }}" style="color:#A3ACAF" style-hover="color:#fff">Атмосфера</a>
+        <a href="#gallery" onClick="{{ goGallery }}" style="color:#A3ACAF" style-hover="color:#fff">Интерьер</a>
+        <a href="#contacts" onClick="{{ goContacts }}" style="color:#A3ACAF" style-hover="color:#fff">Контакты</a>
+      </nav>
+    </sc-if>
+    <button onClick="{{ headerCta }}" style="height:44px;padding:0 20px;background:#C8161E;color:#fff;border:0;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#DE2129">Записаться</button>
+  </div>
+</header>
+
+<section id="top" data-screen-label="Главный экран" style="display:flex;flex-wrap:wrap;flex-direction:row-reverse;min-height:calc(100svh - 64px);background:#000">
+  <div style="flex:1 1 440px;position:relative;min-height:min(62svh,640px);overflow:hidden">
+    <picture>
+      <source media="(min-width: 900px)" srcset="assets/corridor-desktop.jpg"></source>
+      <img src="assets/corridor-mobile.jpg" alt="Зал Man's World: красное кресло, синие стены, паркет ёлочкой" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:saturate(0.94) contrast(1.04)"></img>
+    </picture>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,#000 100%)"></div>
+  </div>
+  <div style="flex:1 1 440px;display:flex;flex-direction:column;justify-content:center;gap:28px;padding:clamp(8px,2vw,40px) clamp(20px,5vw,72px) clamp(40px,6vw,72px);animation:mwUp .6s ease both">
+    <img src="assets/logo.jpg" alt="Логотип Man's World" style="width:clamp(104px,11vw,148px);height:auto;display:block"></img>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#A3ACAF">Барбершоп Man's World</div>
+      <h1 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(42px,6.2vw,92px);line-height:0.98;letter-spacing:0.01em;text-transform:uppercase;color:#ECEEEE;text-wrap:balance">Стрижка, борода, бритьё</h1>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;color:#A3ACAF">
+      <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;padding:6px 10px;border:1px dashed rgba(236,238,238,0.3);color:#A3ACAF">[Адрес]</span>
+      <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;padding:6px 10px;border:1px dashed rgba(236,238,238,0.3);color:#A3ACAF">[Часы работы]</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <button onClick="{{ goServices }}" style="flex:1 1 200px;max-width:280px;height:56px;background:#C8161E;color:#fff;border:0;border-radius:2px;font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#DE2129">Записаться онлайн</button>
+      <button onClick="{{ goServices }}" style="flex:1 1 160px;max-width:240px;height:56px;background:transparent;color:#ECEEEE;border:1px solid rgba(236,238,238,0.35);border-radius:2px;font-size:15px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer" style-hover="border-color:#ECEEEE">Цены</button>
+    </div>
+  </div>
+</section>
+
+<section id="services" data-screen-label="Услуги и цены" style="background:#000;padding:clamp(48px,8vw,104px) 0 clamp(56px,8vw,104px)">
+  <div style="max-width:880px;margin:0 auto;padding:0 clamp(16px,4vw,32px);display:flex;flex-direction:column;gap:14px">
+    <div style="font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#A3ACAF">Услуги и цены</div>
+    <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1;text-transform:uppercase">Выберите услуги</h2>
+    <p style="margin:0;font-size:16px;line-height:1.5;color:#A3ACAF;max-width:560px;text-wrap:pretty">Отметьте одну или несколько услуг, затем выберите удобное время. Цены фиксированные, в рублях.</p>
+  </div>
+
+  <div style="position:sticky;top:64px;z-index:30;background:#000;border-bottom:1px solid rgba(236,238,238,0.1);margin-top:28px">
+    <div style="max-width:880px;margin:0 auto;padding:10px clamp(16px,4vw,32px);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.onClick }}" style="flex:0 0 auto;height:40px;padding:0 16px;border-radius:2px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }}">{{ c.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:0 auto;padding:0 clamp(16px,4vw,32px)">
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+      <div id="{{ g.anchor }}" style="padding-top:36px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;padding-bottom:12px;border-bottom:1px solid rgba(236,238,238,0.22)">
+          <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:28px;text-transform:uppercase;letter-spacing:0.02em">{{ g.title }}</h3>
+          <span style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#A3ACAF">{{ g.tier }}</span>
+        </div>
+        <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="3">
+          <div style="border-bottom:1px solid rgba(236,238,238,0.1);background:{{ s.rowBg }};transition:background .15s">
+            <button onClick="{{ s.onToggle }}" aria-pressed="{{ s.selected }}" style="width:100%;display:flex;align-items:flex-start;gap:14px;padding:18px 12px 14px;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer;min-height:64px">
+              <span style="flex:0 0 24px;width:24px;height:24px;margin-top:1px;display:flex;align-items:center;justify-content:center;border-radius:2px;font-size:15px;font-weight:600;color:#fff;background:{{ s.chkBg }};border:1.5px solid {{ s.chkBorder }}">{{ s.mark }}</span>
+              <span style="flex:1;display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font-size:17px;font-weight:500;line-height:1.3">{{ s.name }}</span>
+                <sc-if value="{{ s.note }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size:14px;color:#A3ACAF">{{ s.note }}</span>
+                </sc-if>
+              </span>
+              <span style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+                <span style="font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap">{{ s.priceLabel }}</span>
+                <sc-if value="{{ s.showVerify }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:2px 6px;border:1px dashed #E2565C;color:#F08A8E;white-space:nowrap">уточнить цену</span>
+                </sc-if>
+              </span>
+            </button>
+            <sc-if value="{{ s.hasDesc }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:0 12px 14px 50px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+                <sc-if value="{{ s.descOpen }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0;font-size:15px;line-height:1.5;color:#C3CACC;max-width:600px;text-wrap:pretty;animation:mwFade .2s ease">{{ s.desc }}</p>
+                  <sc-if value="{{ s.showTrunc }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;padding:2px 6px;border:1px dashed rgba(236,238,238,0.35);color:#A3ACAF">полный текст — уточнить, в источнике обрезан</span>
+                  </sc-if>
+                </sc-if>
+                <button onClick="{{ s.onDesc }}" style="background:none;border:0;padding:6px 0;color:#A3ACAF;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer" style-hover="color:#fff">{{ s.descLabel }}</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+    <p style="margin:28px 0 0;font-size:14px;line-height:1.5;color:#7C8689;max-width:600px">Цены на стрижки, бороду, бритьё и камуфляж указаны для категории мастера «Премиум-барбер».</p>
+  </div>
+</section>
+
+<section id="atmos" data-screen-label="Атмосфера" style="background:#0B1114;padding:clamp(56px,9vw,120px) clamp(16px,5vw,64px)">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center">
+    <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:18px;max-width:440px">
+      <div style="font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:#A3ACAF">Атмосфера</div>
+      <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1.02;text-transform:uppercase;text-wrap:balance">Синий, красный и неон</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#C3CACC;text-wrap:pretty">Глубокие синие стены, красный бархат и кожа, тёмное дерево, паркет ёлочкой и линии неонового света.</p>
+    </div>
+    <div style="flex:2 1 480px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(10px,1.5vw,20px);align-items:start">
+      <img src="assets/bar.jpg" alt="Стойка с красной стеной, неоновой лампой и витриной средств для ухода" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:40% 40%;display:block;filter:saturate(0.94) contrast(1.04)"></img>
+      <img src="assets/wash.jpg" alt="Мойка с красным кожаным креслом" style="width:100%;aspect-ratio:3/4.4;object-fit:cover;object-position:40% 60%;display:block;margin-top:clamp(40px,8vw,120px);filter:saturate(0.94) contrast(1.04)"></img>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" data-screen-label="Интерьер" style="background:#000;padding:clamp(56px,9vw,112px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,5vw,64px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px">
+    <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1;text-transform:uppercase">Интерьер</h2>
+    <span style="font-size:14px;color:#A3ACAF">Нажмите на фото, чтобы открыть</span>
+  </div>
+  <div style="max-width:1280px;margin:28px auto 0;padding:0 clamp(16px,5vw,64px);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,31%);gap:clamp(10px,1.5vw,18px);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:clamp(16px,5vw,64px);scrollbar-width:none">
+    <sc-for list="{{ gallery }}" as="p" hint-placeholder-count="4">
+      <button onClick="{{ p.onOpen }}" style="padding:0;border:0;background:#0B1114;cursor:zoom-in;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;text-align:left;color:inherit">
+        <img src="{{ p.src }}" alt="{{ p.alt }}" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:{{ p.pos }};display:block;filter:saturate(0.94) contrast(1.04)"></img>
+        <span style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#A3ACAF;padding:0 2px 4px;background:#000">{{ p.caption }}</span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section id="contacts" data-screen-label="Контакты" style="background:#0B1114;padding:clamp(56px,9vw,112px) clamp(16px,5vw,64px)">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+    <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1;text-transform:uppercase">Контакты</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(236,238,238,0.12);border:1px solid rgba(236,238,238,0.12)">
+      <div style="background:#0B1114;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Адрес</span>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#C3CACC;border:1px dashed rgba(236,238,238,0.3);padding:10px">[Город, улица, дом]</span>
+      </div>
+      <div style="background:#0B1114;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Часы работы</span>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#C3CACC;border:1px dashed rgba(236,238,238,0.3);padding:10px">[Пн–Вс, с … до …]</span>
+      </div>
+      <div style="background:#0B1114;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Телефон</span>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#C3CACC;border:1px dashed rgba(236,238,238,0.3);padding:10px">[+7 … ]</span>
+      </div>
+      <div style="background:#0B1114;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Соцсети и карты</span>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#C3CACC;border:1px dashed rgba(236,238,238,0.3);padding:10px">[ссылки]</span>
+      </div>
+    </div>
+    <div style="min-height:240px;aspect-ratio:16/6;width:100%;background:repeating-linear-gradient(135deg,#0E171A 0 12px,#121D21 12px 24px);border:1px solid rgba(236,238,238,0.12);display:flex;align-items:center;justify-content:center">
+      <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#A3ACAF;background:#0B1114;padding:6px 10px">карта / схема проезда</span>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ showTodo }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Перед запуском" style="background:#000;padding:clamp(48px,7vw,88px) clamp(16px,5vw,64px);border-top:1px dashed rgba(226,86,92,0.6)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+      <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#F08A8E">Для команды · скрыть в Tweaks</div>
+      <h2 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:clamp(30px,4vw,44px);text-transform:uppercase">Заполнить перед запуском</h2>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.5;color:#C3CACC">
+        <sc-for list="{{ todo }}" as="t" hint-placeholder-count="6">
+          <li style="padding-left:6px;text-wrap:pretty">{{ t }}</li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+</sc-if>
+
+<footer style="background:#000;border-top:1px solid rgba(236,238,238,0.1);padding:36px clamp(16px,5vw,64px) 120px">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+    <img src="assets/logo.jpg" alt="Man's World" style="width:72px;height:72px;display:block"></img>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 24px;font-size:13px;color:#7C8689">
+      <span>© Man's World</span>
+      <a href="#" style="color:#A3ACAF;text-decoration:underline;text-underline-offset:3px">Политика обработки персональных данных</a>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(0,0,0,0.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(236,238,238,0.14);padding:10px 14px calc(10px + env(safe-area-inset-bottom))">
+    <div style="max-width:720px;margin:0 auto;display:flex;align-items:center;gap:14px">
+      <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1 1 auto;display:flex;flex-direction:column;gap:2px;min-width:0">
+          <span style="font-size:13px;color:#A3ACAF">{{ countLabel }}</span>
+          <span style="font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">{{ totalLabel }}</span>
+        </div>
+      </sc-if>
+      <button onClick="{{ barAction }}" style="flex:1 1 auto;height:54px;background:#C8161E;color:#fff;border:0;border-radius:2px;font-size:15px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer" style-hover="background:#DE2129">{{ barCta }}</button>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,0.7);display:flex;justify-content:flex-end;animation:mwFade .2s ease">
+    <div onClick="{{ stop }}" role="dialog" aria-label="Запись" style="width:100%;max-width:520px;height:100%;background:#0B1114;display:flex;flex-direction:column;border-left:1px solid rgba(236,238,238,0.12);animation:mwSheet .28s cubic-bezier(.2,.7,.2,1)">
+      <div style="flex:0 0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px;border-bottom:1px solid rgba(236,238,238,0.1)">
+        <button onClick="{{ back }}" aria-label="Назад" style="width:44px;height:44px;background:none;border:0;color:#ECEEEE;font-size:22px;cursor:pointer;visibility:{{ backVis }}">←</button>
+        <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#A3ACAF">{{ stepLabel }}</span>
+        <button onClick="{{ closeSheet }}" aria-label="Закрыть" style="width:44px;height:44px;background:none;border:0;color:#ECEEEE;font-size:22px;cursor:pointer">✕</button>
+      </div>
+
+      <div style="flex:1 1 auto;overflow-y:auto;padding:24px clamp(16px,4vw,28px) 28px;display:flex;flex-direction:column;gap:26px">
+        <sc-if value="{{ isTime }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:34px;line-height:1;text-transform:uppercase">Когда удобно?</h3>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Мастер</span>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1.5px solid #C8161E;background:rgba(200,22,30,0.08)">
+              <span style="width:20px;height:20px;border-radius:50%;border:6px solid #C8161E;background:#fff;flex:0 0 auto"></span>
+              <span style="display:flex;flex-direction:column;gap:2px">
+                <span style="font-size:16px;font-weight:500">Любой мастер</span>
+                <span style="font-size:13px;color:#A3ACAF">Категория «Премиум-барбер»</span>
+              </span>
+            </div>
+            <sc-if value="{{ showTodo }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.5;color:#A3ACAF;border:1px dashed rgba(236,238,238,0.3);padding:12px">[Мастера: имя, фото, категория — заполнить]</div>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Дата · {{ monthLabel }}</span>
+            <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -4px;padding:0 4px">
+              <sc-for list="{{ dates }}" as="d" hint-placeholder-count="7">
+                <button onClick="{{ d.onClick }}" style="flex:0 0 64px;height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:2px;cursor:pointer;background:{{ d.bg }};color:{{ d.color }};border:1px solid {{ d.border }}">
+                  <span style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.85">{{ d.top }}</span>
+                  <span style="font-size:22px;font-weight:600;font-variant-numeric:tabular-nums">{{ d.num }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#A3ACAF">Желаемое время</span>
+            <sc-if value="{{ noTimes }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:15px;color:#A3ACAF">На сегодня время уже прошло — выберите другой день.</span>
+            </sc-if>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px">
+              <sc-for list="{{ times }}" as="t" hint-placeholder-count="12">
+                <button onClick="{{ t.onClick }}" style="height:48px;border-radius:2px;font-size:16px;font-variant-numeric:tabular-nums;cursor:pointer;background:{{ t.bg }};color:{{ t.color }};border:1px solid {{ t.border }}">{{ t.t }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#A3ACAF;padding:14px;border:1px solid rgba(236,238,238,0.14)">Часы работы и длительность услуг пока не настроены, поэтому это не реальная занятость мастеров. Выбранное время — пожелание: запись подтвердит администратор.</p>
+        </sc-if>
+
+        <sc-if value="{{ isContacts }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:34px;line-height:1;text-transform:uppercase">Подтверждение</h3>
+          <div style="display:flex;flex-direction:column;border:1px solid rgba(236,238,238,0.14)">
+            <sc-for list="{{ selList }}" as="x" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 14px;border-bottom:1px solid rgba(236,238,238,0.1);font-size:15px">
+                <span>{{ x.name }}</span>
+                <span style="font-variant-numeric:tabular-nums;white-space:nowrap">{{ x.priceLabel }}</span>
+              </div>
+            </sc-for>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 14px;font-size:15px;color:#A3ACAF;border-bottom:1px solid rgba(236,238,238,0.1)">
+              <span>{{ whenLabel }}</span>
+              <span>Любой мастер</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px;font-size:18px;font-weight:600">
+              <span>Итого</span>
+              <span style="font-variant-numeric:tabular-nums">{{ totalLabel }}</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:14px;color:#C3CACC">Имя</span>
+              <input value="{{ name }}" onChange="{{ onName }}" autocomplete="name" placeholder="Как к вам обращаться" style="height:54px;padding:0 14px;background:#000;color:#ECEEEE;border:1px solid {{ nameBorder }};border-radius:2px;font-size:16px;outline:none" style-focus="border-color:#ECEEEE"></input>
+              <sc-if value="{{ nameErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#F08A8E">Укажите имя</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:14px;color:#C3CACC">Телефон</span>
+              <input value="{{ phone }}" onChange="{{ onPhone }}" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" style="height:54px;padding:0 14px;background:#000;color:#ECEEEE;border:1px solid {{ phoneBorder }};border-radius:2px;font-size:16px;font-variant-numeric:tabular-nums;outline:none" style-focus="border-color:#ECEEEE"></input>
+              <sc-if value="{{ phoneErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#F08A8E">Введите номер полностью</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:14px;color:#C3CACC">Комментарий <span style="color:#7C8689">— необязательно</span></span>
+              <textarea value="{{ comment }}" onChange="{{ onComment }}" rows="2" style="padding:12px 14px;background:#000;color:#ECEEEE;border:1px solid rgba(236,238,238,0.2);border-radius:2px;font-size:16px;resize:vertical;outline:none" style-focus="border-color:#ECEEEE"></textarea>
+            </label>
+            <p style="margin:0;font-size:13px;line-height:1.5;color:#7C8689">Отправляя заявку, вы соглашаетесь с <a href="#" style="color:#A3ACAF;text-decoration:underline">политикой обработки персональных данных</a>.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:20px;animation:mwUp .35s ease both">
+            <span style="width:56px;height:56px;border-radius:50%;background:#C8161E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px">✓</span>
+            <h3 style="margin:0;font-family:'Forum',serif;font-weight:400;font-size:38px;line-height:1;text-transform:uppercase">Заявка отправлена</h3>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#C3CACC">{{ doneText }}</p>
+            <div style="display:flex;flex-direction:column;border:1px solid rgba(236,238,238,0.14)">
+              <sc-for list="{{ selList }}" as="x" hint-placeholder-count="2">
+                <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 14px;border-bottom:1px solid rgba(236,238,238,0.1);font-size:15px">
+                  <span>{{ x.name }}</span>
+                  <span style="font-variant-numeric:tabular-nums;white-space:nowrap">{{ x.priceLabel }}</span>
+                </div>
+              </sc-for>
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 14px;font-size:15px;color:#A3ACAF">
+                <span>{{ whenLabel }}</span>
+                <span style="color:#ECEEEE;font-weight:600;font-variant-numeric:tabular-nums">{{ totalLabel }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="flex:0 0 auto;padding:12px clamp(16px,4vw,28px) calc(12px + env(safe-area-inset-bottom));border-top:1px solid rgba(236,238,238,0.12);display:flex;align-items:center;gap:14px;background:#0B1114">
+        <sc-if value="{{ footTotal }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:2px;flex:1 1 auto">
+            <span style="font-size:13px;color:#A3ACAF">{{ countLabel }}</span>
+            <span style="font-size:19px;font-weight:600;font-variant-numeric:tabular-nums">{{ totalLabel }}</span>
+          </div>
+        </sc-if>
+        <button onClick="{{ primary }}" style="flex:1 1 auto;height:54px;border:0;border-radius:2px;font-size:15px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;background:{{ primaryBg }};color:{{ primaryColor }}">{{ primaryLabel }}</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:56px 12px 24px;animation:mwFade .2s ease">
+    <button onClick="{{ lbClose }}" aria-label="Закрыть" style="position:absolute;top:8px;right:8px;width:48px;height:48px;background:none;border:0;color:#ECEEEE;font-size:24px;cursor:pointer">✕</button>
+    <img onClick="{{ stop }}" src="{{ lbSrc }}" alt="{{ lbAlt }}" style="max-width:100%;max-height:calc(100svh - 160px);object-fit:contain;display:block;filter:saturate(0.94) contrast(1.04)"></img>
+    <div onClick="{{ stop }}" style="display:flex;align-items:center;gap:16px">
+      <button onClick="{{ lbPrev }}" aria-label="Предыдущее" style="width:48px;height:48px;background:none;border:1px solid rgba(236,238,238,0.3);color:#ECEEEE;font-size:20px;cursor:pointer">←</button>
+      <span style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#A3ACAF;min-width:140px;text-align:center">{{ lbCaption }}</span>
+      <button onClick="{{ lbNext }}" aria-label="Следующее" style="width:48px;height:48px;background:none;border:1px solid rgba(236,238,238,0.3);color:#ECEEEE;font-size:20px;cursor:pointer">→</button>
+    </div>
+  </div>
+</sc-if>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mobileView&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Просмотр&quot;},&quot;showTodo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Контент&quot;},&quot;previewStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;time&quot;,&quot;contacts&quot;,&quot;done&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;'none'|'time'|'contacts'|'done'&quot;,&quot;section&quot;:&quot;Превью записи&quot;}}">
+const SERVICES = [
+  { id: 'cut', g: 'cuts', name: 'Мужская стрижка', price: 2400, desc: 'Мужская стрижка — в процедуру мужской стрижки включается мытьё головы, непосредственно стрижка и укладка с…', trunc: true },
+  { id: 'kid', g: 'cuts', name: 'Детская стрижка', price: 2200, note: 'от 3 до 10 лет', desc: 'Если вы хотите увидеть не просто аккуратную прическу, а стильную и модную,…', trunc: true },
+  { id: 'clip', g: 'cuts', name: 'Стрижка машинкой', price: 2000, desc: 'Стрижка машинкой — оптимальный вариант для коротких волос! Услуга выполняется машинкой для стрижки волос с…', trunc: true },
+  { id: 'one', g: 'cuts', name: 'Стрижка под 1 насадку', price: 1000 },
+  { id: 'edge', g: 'cuts', name: 'Окантовка', price: 1000, desc: 'Услуга окантовки позволяет сохранить края мужской стрижки аккуратными. Окантовка также помогает придать стрижке…', trunc: true },
+  { id: 'beard', g: 'beard', name: 'Моделирование бороды', price: 1900, desc: 'Иметь бороду круто, а иметь ухоженную бороду, круто вдвойне. Моделирование бороды включает консультацию, мытьё бороды,…', trunc: true },
+  { id: 'royal', g: 'beard', name: 'Королевское бритьё лица', price: 2200, desc: 'Королевское бритьё лица — это не просто процесс использования опасной бритвы, а целый ритуал, который включает несколько…', trunc: true },
+  { id: 'head', g: 'beard', name: 'Бритьё головы', price: 2200, desc: 'Бритьё головы опасной бритвой — это комплекс поэтапных процедур, который придает абсолютную гладкость и сияние…', trunc: true },
+  { id: 'camoh', g: 'camo', name: 'Камуфляж головы', price: 1700, desc: 'Камуфляж — процедура для маскировки седины/неравномерного цвета или просто смены имиджа. Мастера подберут оттенок…', trunc: true },
+  { id: 'camob', g: 'camo', name: 'Камуфляж бороды', price: 1400, desc: 'Камуфляж — процедура для маскировки седины/неравномерного цвета или просто смены имиджа. Мастера подберут оттенок…', trunc: true },
+  { id: 'cb', g: 'combo', name: 'Стрижка + Борода', price: 3700, desc: 'Выгодное предложение, комплекс, который включает в себя мужскую стрижку и моделирование бороды.' },
+  { id: 'fs', g: 'combo', name: 'Отец + Сын', price: 4100, note: 'сын от 3 до 10 лет' },
+  { id: 'mask', g: 'extra', name: 'Черная маска', price: 1300, desc: '«Чёрная маска» состоит из нескольких этапов и подготовки кожи для её нанесения (распаривание горячими полотенцами,…', trunc: true },
+  { id: 'wax', g: 'extra', name: 'Удаление воском', price: 700, desc: 'Удаление волос воском — это быстрый и эффективный метод избавиться от нежелательных волос (уши, брови, нос), где…', trunc: true },
+  { id: 'style', g: 'extra', name: 'Укладка', price: 700, desc: 'У вас есть всего 15 минут? И нужно быстро привести волосы в порядок? В услугу входит мытьё головы и укладка различными стайлингами.' },
+  { id: 'patch', g: 'extra', name: 'Патчи', price: 400, verify: true }
+];
+const GROUPS = [
+  { id: 'cuts', title: 'Стрижки', chip: 'Стрижки', tier: 'Премиум-барбер' },
+  { id: 'beard', title: 'Борода и бритьё', chip: 'Борода и бритьё', tier: 'Премиум-барбер' },
+  { id: 'camo', title: 'Камуфляж', chip: 'Камуфляж', tier: 'Премиум-барбер' },
+  { id: 'combo', title: 'Комплексы', chip: 'Комплексы', tier: 'Комплексы / Премиум' },
+  { id: 'extra', title: 'Дополнительно', chip: 'Дополнительно', tier: 'Дополнительные услуги' }
+];
+const GALLERY = [
+  { src: 'assets/corridor-desktop.jpg', alt: 'Зал с красным креслом и неоновыми линиями', caption: 'Зал', pos: '50% 70%' },
+  { src: 'assets/bar.jpg', alt: 'Стойка и витрина', caption: 'Стойка и витрина', pos: '50% 40%' },
+  { src: 'assets/wash.jpg', alt: 'Мойка', caption: 'Мойка', pos: '40% 60%' },
+  { src: 'assets/clipper.jpg', alt: 'Работа машинкой', caption: 'В работе', pos: '60% 50%' },
+  { src: 'assets/scissors.jpg', alt: 'Ножницы мастера', caption: 'Инструмент', pos: '50% 50%' },
+  { src: 'assets/clipper-neck.jpg', alt: 'Окантовка триммером', caption: 'В работе', pos: '55% 50%' }
+];
+const TODO = [
+  'Адрес, телефон, часы работы, ссылки на соцсети и карты.',
+  'Мастера: имена, фото, категории. Есть ли кроме «Премиум-барбер» другие категории мастеров и свои цены для них.',
+  'Длительность каждой услуги и рабочие часы — без них расписание на сайте остаётся демонстрационным, слоты не рассчитываются.',
+  '«Патчи»: цена на скриншоте видна частично (читается как 400 ₽), описания нет — подтвердить.',
+  'Полнота списка: между «Камуфляж головы» и «Бритьё головы» и после «Отец + Сын» могли остаться позиции, не попавшие на скриншоты. Подтвердить, что «Бритьё головы», «Моделирование бороды», «Королевское бритьё лица», «Камуфляж бороды», «Окантовка» относятся к «Премиум-барбер».',
+  'Полные тексты описаний услуг — в источнике они обрезаны.',
+  'Права на фотографии из картографического сервиса: элементы интерфейса карт обрезаны, водяных знаков не обнаружено, но использование нужно согласовать с владельцем снимков.',
+  'Политика обработки персональных данных и то, кто и как подтверждает заявки.',
+  'Логотип в высоком разрешении или вектор (сейчас растр 1254 px).'
+];
+const DOW = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+const MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const MON_N = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+const NB = '\u00a0';
+const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, NB) + NB + '₽';
+const plural = (n, f) => { const a = n % 10, b = n % 100; return f[(a === 1 && b !== 11) ? 0 : (a >= 2 && a <= 4 && (b < 10 || b >= 20)) ? 1 : 2]; };
+const HDR = 64, CHIPS = 61;
+
+class Component extends DCLogic {
+  state = { sel: {}, desc: {}, sheet: false, step: 1, di: 0, time: null, name: '', phone: '', comment: '', tried: false, lb: null, active: 'cuts', wide: typeof window !== 'undefined' ? window.innerWidth >= 900 : true };
+
+  componentDidMount() {
+    this.onResize = () => { const w = window.innerWidth >= 900; if (w !== this.state.wide) this.setState({ wide: w }); };
+    this.onScroll = () => {
+      let act = GROUPS[0].id;
+      for (const g of GROUPS) { const el = document.getElementById('grp-' + g.id); if (el && el.getBoundingClientRect().top <= HDR + CHIPS + 24) act = g.id; }
+      if (act !== this.state.active) this.setState({ active: act });
+    };
+    this.onKey = e => { if (e.key === 'Escape') { if (this.state.lb !== null) this.setState({ lb: null }); else if (this.state.sheet) this.close(); } if (this.state.lb !== null) { if (e.key === 'ArrowRight') this.lbStep(1); if (e.key === 'ArrowLeft') this.lbStep(-1); } };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.onResize();
+    this.applyPreview();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+  componentDidUpdate(prev) {
+    if (prev.previewStep !== this.props.previewStep) this.applyPreview();
+    document.body.style.overflow = (this.state.sheet || this.state.lb !== null) ? 'hidden' : '';
+  }
+  applyPreview() {
+    const p = this.props.previewStep ?? 'none';
+    if (p === 'none') return;
+    const step = p === 'time' ? 1 : p === 'contacts' ? 2 : 3;
+    this.setState({ sel: { cut: true, beard: true }, sheet: true, step, di: 1, time: step > 1 ? '12:00' : null, name: step > 1 ? 'Алексей' : '', phone: step > 1 ? '+7 (900) 123-45-67' : '' });
+  }
+
+  scrollToId(id, extra = 0) {
+    const el = document.getElementById(id); if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HDR - extra, behavior: 'smooth' });
+  }
+  days() {
+    const out = []; const now = new Date();
+    for (let i = 0; i < 14; i++) { const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i); out.push(d); }
+    return out;
+  }
+  timesFor(di) {
+    const list = []; const now = new Date();
+    for (let h = 10; h <= 20; h++) for (const m of [0, 30]) {
+      if (di === 0 && (h * 60 + m) <= now.getHours() * 60 + now.getMinutes() + 30) continue;
+      list.push(String(h).padStart(2, '0') + ':' + (m ? '30' : '00'));
+    }
+    return list;
+  }
+  close() { this.setState({ sheet: false, tried: false }); }
+  lbStep(dir) { this.setState(s => ({ lb: (s.lb + dir + GALLERY.length) % GALLERY.length })); }
+
+  renderVals() {
+    const s = this.state;
+    const todoOn = this.props.showTodo ?? true;
+    const selItems = SERVICES.filter(x => s.sel[x.id]);
+    const count = selItems.length;
+    const total = selItems.reduce((a, x) => a + x.price, 0);
+    const hasSel = count > 0;
+    const days = this.days();
+    const day = days[s.di];
+    const times = this.timesFor(s.di);
+    const phoneDigits = s.phone.replace(/\D/g, '');
+    const nameOk = s.name.trim().length >= 2;
+    const phoneOk = phoneDigits.length === 11;
+    const dayLabel = s.di === 0 ? 'Сегодня' : s.di === 1 ? 'Завтра' : DOW[day.getDay()];
+    const whenLabel = day.getDate() + ' ' + MON[day.getMonth()] + (s.time ? ', ' + s.time : '');
+    const red = '#C8161E', line = 'rgba(236,238,238,0.2)';
+
+    const goServices = e => { e && e.preventDefault && e.preventDefault(); this.scrollToId('services', -8); };
+    const openBooking = () => { if (!hasSel) { goServices(); return; } this.setState({ sheet: true, step: 1 }); };
+
+    const groups = GROUPS.map(g => ({
+      ...g, anchor: 'grp-' + g.id,
+      items: SERVICES.filter(x => x.g === g.id).map(x => {
+        const on = !!s.sel[x.id]; const open = !!s.desc[x.id];
+        return {
+          ...x, selected: on, mark: on ? '✓' : '', note: x.note || '',
+          priceLabel: fmt(x.price), hasDesc: !!x.desc, descOpen: open, descLabel: open ? 'Скрыть' : 'Подробнее',
+          showVerify: !!x.verify && todoOn, showTrunc: !!x.trunc && todoOn,
+          rowBg: on ? 'rgba(200,22,30,0.09)' : 'transparent', chkBg: on ? red : 'transparent', chkBorder: on ? red : 'rgba(236,238,238,0.45)',
+          onToggle: () => this.setState(st => ({ sel: { ...st.sel, [x.id]: !st.sel[x.id] } })),
+          onDesc: () => this.setState(st => ({ desc: { ...st.desc, [x.id]: !st.desc[x.id] } }))
+        };
+      })
+    }));
+    const chips = GROUPS.map(g => {
+      const on = s.active === g.id;
+      return { label: g.chip, bg: on ? '#ECEEEE' : 'transparent', color: on ? '#000' : '#C3CACC', border: on ? '#ECEEEE' : line, onClick: () => { this.setState({ active: g.id }); this.scrollToId('grp-' + g.id, CHIPS - 12); } };
+    });
+    const dates = days.map((d, i) => {
+      const on = i === s.di;
+      return { top: i === 0 ? 'Сег' : i === 1 ? 'Завт' : DOW[d.getDay()], num: d.getDate(), bg: on ? '#ECEEEE' : 'transparent', color: on ? '#000' : '#ECEEEE', border: on ? '#ECEEEE' : line, onClick: () => this.setState({ di: i, time: null }) };
+    });
+    const timeBtns = times.map(t => {
+      const on = s.time === t;
+      return { t, bg: on ? red : 'transparent', color: on ? '#fff' : '#ECEEEE', border: on ? red : line, onClick: () => this.setState({ time: t }) };
+    });
+
+    const step = s.step;
+    let primaryLabel, primary, enabled = true;
+    if (step === 1) { enabled = !!s.time; primaryLabel = s.time ? 'Далее' : 'Выберите время'; primary = () => { if (s.time) this.setState({ step: 2 }); }; }
+    else if (step === 2) { primaryLabel = 'Отправить заявку'; primary = () => { if (nameOk && phoneOk) this.setState({ step: 3, tried: false }); else this.setState({ tried: true }); }; }
+    else { primaryLabel = 'Готово'; primary = () => this.setState({ sheet: false, step: 1, sel: {}, time: null, comment: '' }); }
+
+    const lb = s.lb !== null ? GALLERY[s.lb] : null;
+    const inFrame = typeof window !== 'undefined' && window.location.search.indexOf('mw_mobile=1') >= 0;
+    const mobileFrame = (this.props.mobileView ?? false) && !inFrame;
+    const frameSrc = typeof window !== 'undefined' ? window.location.pathname + '?mw_mobile=1' : '';
+
+    return {
+      mobileFrame, pageVisible: !mobileFrame, frameSrc,
+      wide: s.wide, showTodo: todoOn,
+      goTop: e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      goServices,
+      goAtmos: e => { e.preventDefault(); this.scrollToId('atmos'); },
+      goGallery: e => { e.preventDefault(); this.scrollToId('gallery'); },
+      goContacts: e => { e.preventDefault(); this.scrollToId('contacts'); },
+      headerCta: openBooking,
+      groups, chips, todo: TODO,
+      hasSel, countLabel: count + ' ' + plural(count, ['услуга', 'услуги', 'услуг']), totalLabel: fmt(total),
+      showBar: !s.sheet && s.lb === null && (hasSel || !s.wide),
+      barCta: hasSel ? 'Выбрать время' : 'Записаться онлайн', barAction: openBooking,
+      gallery: GALLERY.map((p, i) => ({ ...p, onOpen: () => this.setState({ lb: i }) })),
+      lbOpen: !!lb, lbSrc: lb ? lb.src : '', lbAlt: lb ? lb.alt : '', lbCaption: lb ? (s.lb + 1) + ' / ' + GALLERY.length + ' · ' + lb.caption : '',
+      lbClose: () => this.setState({ lb: null }), lbPrev: e => { e.stopPropagation(); this.lbStep(-1); }, lbNext: e => { e.stopPropagation(); this.lbStep(1); },
+      stop: e => e.stopPropagation(),
+      sheetOpen: s.sheet, isTime: step === 1, isContacts: step === 2, isDone: step === 3,
+      stepLabel: step === 1 ? 'Шаг 1 из 2 · Время' : step === 2 ? 'Шаг 2 из 2 · Контакты' : 'Готово',
+      backVis: step === 2 ? 'visible' : 'hidden',
+      back: () => this.setState({ step: 1 }),
+      closeSheet: () => this.close(),
+      monthLabel: MON_N[day.getMonth()] + ', ' + dayLabel.toLowerCase(),
+      dates, times: timeBtns, noTimes: times.length === 0,
+      selList: selItems.map(x => ({ name: x.name, priceLabel: fmt(x.price) })),
+      whenLabel,
+      footTotal: step !== 3,
+      primaryLabel, primary, primaryBg: enabled ? red : 'rgba(236,238,238,0.1)', primaryColor: enabled ? '#fff' : '#7C8689',
+      name: s.name, phone: s.phone, comment: s.comment,
+      nameErr: s.tried && !nameOk, phoneErr: s.tried && !phoneOk,
+      nameBorder: s.tried && !nameOk ? '#E2565C' : line, phoneBorder: s.tried && !phoneOk ? '#E2565C' : line,
+      onName: e => this.setState({ name: e.target.value }),
+      onComment: e => this.setState({ comment: e.target.value }),
+      onPhone: e => {
+        const raw = e.target.value;
+        let d = raw.replace(/\D/g, '');
+        if (!d) { this.setState({ phone: '' }); return; }
+        if (d[0] === '8') d = '7' + d.slice(1);
+        if (d[0] !== '7') d = '7' + d;
+        const p = d.slice(1, 11);
+        let out = '+7';
+        if (p.length) out += ' (' + p.slice(0, 3);
+        if (p.length > 3) out += ') ' + p.slice(3, 6);
+        if (p.length > 6) out += '-' + p.slice(6, 8);
+        if (p.length > 8) out += '-' + p.slice(8, 10);
+        this.setState({ phone: out });
+      },
+      doneText: (s.name.trim() ? s.name.trim() + ', заявка' : 'Заявка') + ' на ' + whenLabel + ' передана администратору. Время будет подтверждено по телефону ' + s.phone + '.'
+    };
+  }
+}
+</script>
+</body>
+</html>

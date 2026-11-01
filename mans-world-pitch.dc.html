@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./mw-live.js"></script>
+<style>
+body{margin:0;background:#000;color:#EDE6DA;font-family:'Golos Text',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#EDE6DA;text-decoration:none}
+a:hover{color:#fff}
+button{font-family:inherit}
+</style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Обложка" data-speaker-notes="Предложение по собственному сайту Man's World. Всё, что дальше, собрано из реальных материалов барбершопа: логотип, фото, прайс из Яндекс Карт." style="background:#0B1319;display:grid;grid-template-columns:1080px 840px;overflow:hidden">
+  <div style="display:flex;flex-direction:column;justify-content:space-between;padding:100px 120px 90px">
+    <img src="assets/logo.jpg" alt="Man's World" style="width:180px;height:180px;display:block;border-radius:24px"></img>
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">Предложение</span>
+      <h1 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:120px;line-height:1;letter-spacing:0.01em;color:#EDE6DA">Сайт для<br>Man's World</h1>
+      <p style="margin:0;font-size:36px;line-height:1.4;color:#CFC9BE;max-width:780px">Собственный сайт барбершопа с ценами, интерьером и онлайн-записью с телефона</p>
+    </div>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">Ноябрь 2026</span>
+  </div>
+  <div style="position:relative;overflow:hidden">
+    <img src="assets/corridor-desktop.jpg" alt="Зал Man's World" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:saturate(0.92) contrast(1.05)"></img>
+  </div>
+</section>
+
+<section data-label="Сейчас" data-speaker-notes="Сейчас клиент встречает Man's World только внутри Яндекс Карт. Там есть прайс и запись через YCLIENTS, но нет своей площадки." style="background:#0B1319;padding:100px 120px 80px;display:grid;grid-template-columns:minmax(0,1fr) 820px;gap:80px;align-items:center">
+  <div style="display:flex;flex-direction:column;gap:52px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">01 · Сейчас</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Где Man's World сейчас</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.2)">
+      <div style="display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:28px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">01</span>
+        <span style="font-size:34px;line-height:1.35">Карточка на Яндекс Картах: услуги, цены и фото</span>
+      </div>
+      <div style="display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:28px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">02</span>
+        <span style="font-size:34px;line-height:1.35">Онлайн-запись через YCLIENTS внутри карт</span>
+      </div>
+      <div style="display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:28px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#C9202A">03</span>
+        <span style="font-size:34px;line-height:1.35;color:#EDE6DA">Собственного сайта нет</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:40px;justify-content:center;align-items:center">
+    <img src="uploads/photo_2026-11-01 18.28.28.jpeg" alt="Прайс в Яндекс Картах" style="height:820px;width:auto;display:block;border:1px solid rgba(237,230,218,0.18);border-radius:28px"></img>
+    <img src="uploads/photo_2026-11-01 20.36.13.jpeg" alt="Специалисты в Яндекс Картах" style="height:820px;width:auto;display:block;border:1px solid rgba(237,230,218,0.18);border-radius:28px"></img>
+  </div>
+</section>
+
+<section data-label="Зачем сайт" data-speaker-notes="Три задачи сайта: показать бренд и интерьер, дать удобную запись с телефона и стать одной ссылкой для соцсетей, визиток и QR у входа." style="background:#101A21;padding:100px 120px 80px;display:flex;flex-direction:column;gap:72px">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">02 · Задачи</span>
+    <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Что даёт собственный сайт</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;flex:1">
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <img src="assets/bar.jpg" alt="Стойка и витрина" style="width:100%;height:360px;object-fit:cover;object-position:50% 40%;display:block"></img>
+      <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Свой образ</span>
+      <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Логотип, реальный интерьер и тон бренда — без чужих карточек рядом</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <img src="assets/clipper.jpg" alt="Работа мастера" style="width:100%;height:360px;object-fit:cover;object-position:60% 50%;display:block"></img>
+      <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Запись с телефона</span>
+      <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Услуги, специалист, время и контакты — на одной странице</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <img src="assets/wash.jpg" alt="Мойка" style="width:100%;height:360px;object-fit:cover;object-position:40% 60%;display:block"></img>
+      <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Одна ссылка</span>
+      <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Для соцсетей, визиток и QR-кода у входа</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Материалы" data-speaker-notes="Сайт собран только из реальных данных: прайс из карт без изменений, фото интерьера и работы, специалист из карточки." style="background:#0B1319;padding:100px 120px 80px;display:flex;flex-direction:column;justify-content:space-between">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">03 · Материалы</span>
+    <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Из чего собран сайт</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(237,230,218,0.2)">
+    <div style="display:flex;flex-direction:column;gap:20px;padding:40px 40px 0 0">
+      <span style="font-family:'Prata',serif;font-size:220px;line-height:0.9;color:#EDE6DA">16</span>
+      <span style="font-size:32px;line-height:1.35;color:#CFC9BE">услуг с ценами из Яндекс Карт, без изменений</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;padding:40px 40px 0;border-left:1px solid rgba(237,230,218,0.14)">
+      <span style="font-family:'Prata',serif;font-size:220px;line-height:0.9;color:#EDE6DA">5</span>
+      <span style="font-size:32px;line-height:1.35;color:#CFC9BE">групп услуг для быстрого поиска</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;padding:40px 40px 0;border-left:1px solid rgba(237,230,218,0.14)">
+      <span style="font-family:'Prata',serif;font-size:220px;line-height:0.9;color:#EDE6DA">6</span>
+      <span style="font-size:32px;line-height:1.35;color:#CFC9BE">фотографий интерьера и работы</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;padding:40px 0 0 40px;border-left:1px solid rgba(237,230,218,0.14)">
+      <span style="font-family:'Prata',serif;font-size:220px;line-height:0.9;color:#C9202A">1</span>
+      <span style="font-size:32px;line-height:1.35;color:#CFC9BE">специалист: Петрос, Премиум-барбер</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Структура" data-speaker-notes="Пять разделов на одной странице. Кнопка записи доступна из любой точки: в шапке и в нижней панели на телефоне." style="background:#101A21;padding:100px 120px 80px;display:flex;flex-direction:column;gap:72px">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">04 · Структура</span>
+    <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Структура сайта</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <img src="assets/corridor-mobile.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"></img>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">01</span>
+      <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Главный экран</span>
+      <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Фото зала, название, кнопка записи</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="width:100%;height:300px;background:#0B1319;border:1px solid rgba(237,230,218,0.18);display:flex;flex-direction:column;justify-content:center;gap:18px;padding:20px">
+        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px"><span style="min-width:0">Окантовка</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">1 000</span></span>
+        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px"><span style="min-width:0">Укладка</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">700</span></span>
+        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px;color:#C9202A"><span style="min-width:0">Черная маска</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">1 300</span></span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">02</span>
+      <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Услуги и цены</span>
+      <span style="font-size:26px;line-height:1.4;color:#CFC9BE">16 позиций, выбор нажатием</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <img src="assets/bar.jpg" alt="" style="width:100%;height:300px;object-fit:cover;object-position:50% 35%;display:block"></img>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">03</span>
+      <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Атмосфера</span>
+      <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Цвета и материалы интерьера</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <img src="assets/scissors.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"></img>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">04</span>
+      <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Интерьер</span>
+      <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Галерея с просмотром на весь экран</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="width:100%;height:300px;background:repeating-linear-gradient(135deg,#0E171D 0 14px,#121C23 14px 28px);border:1px solid rgba(237,230,218,0.18);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#B3ADA3;background:#101A21;padding:6px 12px">карта</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">05</span>
+      <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Контакты</span>
+      <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Адрес, часы, телефон, схема проезда</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Запись" data-speaker-notes="Запись с телефона в четыре шага. Это живые экраны — их можно пролистать прямо на слайде." style="background:#0B1319;padding:90px 120px 60px;display:flex;flex-direction:column;gap:44px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">05 · Запись</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Запись в четыре шага</h2>
+    </div>
+    <span style="font-size:26px;color:#938F88">Живые экраны — их можно пролистать</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,300px);justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="width:300px;border:8px solid #1E2A32;border-radius:42px;overflow:hidden;position:relative;background:#000">
+        <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=services" w="390" h="844" label="Выбор услуг" hint-size="284px,615px" style="width:284px;height:615px"></x-import>
+        <div style="position:absolute;top:0;left:0;right:0;height:34px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:80px;height:22px;border-radius:12px;background:#1E2A32"></div></div>
+      </div>
+      <span style="font-size:30px"><span style="font-family:'JetBrains Mono',monospace;color:#C9202A">01 </span>Услуги</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="width:300px;border:8px solid #1E2A32;border-radius:42px;overflow:hidden;position:relative;background:#000">
+        <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=master" w="390" h="844" label="Выбор специалиста" hint-size="284px,615px" style="width:284px;height:615px"></x-import>
+        <div style="position:absolute;top:0;left:0;right:0;height:34px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:80px;height:22px;border-radius:12px;background:#1E2A32"></div></div>
+      </div>
+      <span style="font-size:30px"><span style="font-family:'JetBrains Mono',monospace;color:#C9202A">02 </span>Специалист</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="width:300px;border:8px solid #1E2A32;border-radius:42px;overflow:hidden;position:relative;background:#000">
+        <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=time" w="390" h="844" label="Выбор времени" hint-size="284px,615px" style="width:284px;height:615px"></x-import>
+        <div style="position:absolute;top:0;left:0;right:0;height:34px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:80px;height:22px;border-radius:12px;background:#1E2A32"></div></div>
+      </div>
+      <span style="font-size:30px"><span style="font-family:'JetBrains Mono',monospace;color:#C9202A">03 </span>Дата и время</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="width:300px;border:8px solid #1E2A32;border-radius:42px;overflow:hidden;position:relative;background:#000">
+        <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=contacts" w="390" h="844" label="Контакты" hint-size="284px,615px" style="width:284px;height:615px"></x-import>
+        <div style="position:absolute;top:0;left:0;right:0;height:34px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:80px;height:22px;border-radius:12px;background:#1E2A32"></div></div>
+      </div>
+      <span style="font-size:30px"><span style="font-family:'JetBrains Mono',monospace;color:#C9202A">04 </span>Контакты</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Варианты" data-speaker-notes="Дальше — три визуальных направления. Структура и запись одинаковые, отличается характер: шрифты, цвет, главный экран и способ выбора услуги." style="background:#0B1319;position:relative;overflow:hidden;display:flex;align-items:center;padding:0 120px">
+  <img src="assets/bar.jpg" alt="" style="position:absolute;top:0;right:0;width:62%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(0.92) contrast(1.05)"></img>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,#0B1319 38%,rgba(11,19,25,0.2) 75%,rgba(11,19,25,0) 100%)"></div>
+  <div style="position:relative;display:flex;flex-direction:column;gap:36px;max-width:860px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">06 · Варианты</span>
+    <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:104px;line-height:1">Три визуальных направления</h2>
+    <p style="margin:0;font-size:36px;line-height:1.4;color:#CFC9BE">Одна структура и одна запись — разные шрифты, цвет и главный экран</p>
+  </div>
+</section>
+
+<section data-label="Вариант A" data-speaker-notes="Вариант A. Серифный шрифт Prata, кремовый текст на сине-чёрном фоне. Фото и заголовок рядом. Услуга добавляется круглой кнопкой плюс. Превью живое." style="background:#0B1319;position:relative;overflow:hidden">
+  <div style="position:absolute;left:120px;top:100px;bottom:80px;width:480px;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">Вариант A</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:84px;line-height:1">Editorial</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.2)">
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Серифный шрифт, кремовый на сине-чёрном</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Фото и заголовок рядом</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуга — круглая кнопка «+»</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ pickA }}" style="height:80px;border:1px solid {{ aBorder }};background:{{ aBg }};color:{{ aColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ aLabel }}</button>
+      <a href="mans-world-v3.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
+    </div>
+  </div>
+  <div style="position:absolute;left:720px;top:100px;width:1080px;border:1px solid rgba(237,230,218,0.2);background:#000">
+    <div style="height:40px;background:#16222A;display:flex;align-items:center;gap:10px;padding:0 16px"><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span></div>
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html" w="1440" h="900" label="Вариант A, десктоп" hint-size="1078px,674px" style="width:1078px;height:674px"></x-import>
+  </div>
+  <div style="position:absolute;left:640px;top:430px;width:276px;border:8px solid #1E2A32;border-radius:40px;overflow:hidden;background:#000;box-shadow:0 40px 80px rgba(0,0,0,0.6)">
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1" w="390" h="844" label="Вариант A, телефон" hint-size="260px,563px" style="width:260px;height:563px"></x-import>
+    <div style="position:absolute;top:0;left:0;right:0;height:30px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:72px;height:20px;border-radius:12px;background:#1E2A32"></div></div>
+  </div>
+</section>
+
+<section data-label="Вариант B" data-speaker-notes="Вариант B. Чистый чёрный, геометрический гротеск Geologica, название разнесено по углам главного экрана. Услуги — плитки, выбранная становится белой." style="background:#0B1319;position:relative;overflow:hidden">
+  <div style="position:absolute;left:120px;top:100px;bottom:80px;width:480px;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">Вариант B</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:84px;line-height:1">Grid</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.2)">
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Гротеск, чистый чёрный и белый</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Название по углам поверх фото</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуги — плитки-карточки</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ pickB }}" style="height:80px;border:1px solid {{ bBorder }};background:{{ bBg }};color:{{ bColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ bLabel }}</button>
+      <a href="variants/v3b-grid.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
+    </div>
+  </div>
+  <div style="position:absolute;left:720px;top:100px;width:1080px;border:1px solid rgba(237,230,218,0.2);background:#000">
+    <div style="height:40px;background:#16222A;display:flex;align-items:center;gap:10px;padding:0 16px"><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span></div>
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3b-grid.dc.html" w="1440" h="900" label="Вариант B, десктоп" hint-size="1078px,674px" style="width:1078px;height:674px"></x-import>
+  </div>
+  <div style="position:absolute;left:640px;top:430px;width:276px;border:8px solid #1E2A32;border-radius:40px;overflow:hidden;background:#000;box-shadow:0 40px 80px rgba(0,0,0,0.6)">
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3b-grid.dc.html?mw_mobile=1" w="390" h="844" label="Вариант B, телефон" hint-size="260px,563px" style="width:260px;height:563px"></x-import>
+    <div style="position:absolute;top:0;left:0;right:0;height:30px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:72px;height:20px;border-radius:12px;background:#1E2A32"></div></div>
+  </div>
+</section>
+
+<section data-label="Вариант C" data-speaker-notes="Вариант C. Графит и серебро — под металлические буквы логотипа. Центрированный главный экран с логотипом. Услуги отмечаются квадратным чекбоксом." style="background:#0B1319;position:relative;overflow:hidden">
+  <div style="position:absolute;left:120px;top:100px;bottom:80px;width:480px;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">Вариант C</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:84px;line-height:1">Silver</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.2)">
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Графит и серебро, как в логотипе</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Логотип в центре главного экрана</span>
+      <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуга — квадратный чекбокс</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ pickC }}" style="height:80px;border:1px solid {{ cBorder }};background:{{ cBg }};color:{{ cColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ cLabel }}</button>
+      <a href="variants/v3c-silver.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
+    </div>
+  </div>
+  <div style="position:absolute;left:720px;top:100px;width:1080px;border:1px solid rgba(237,230,218,0.2);background:#000">
+    <div style="height:40px;background:#16222A;display:flex;align-items:center;gap:10px;padding:0 16px"><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span><span style="width:12px;height:12px;border-radius:50%;background:#3A4952"></span></div>
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3c-silver.dc.html" w="1440" h="900" label="Вариант C, десктоп" hint-size="1078px,674px" style="width:1078px;height:674px"></x-import>
+  </div>
+  <div style="position:absolute;left:640px;top:430px;width:276px;border:8px solid #1E2A32;border-radius:40px;overflow:hidden;background:#000;box-shadow:0 40px 80px rgba(0,0,0,0.6)">
+    <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3c-silver.dc.html?mw_mobile=1" w="390" h="844" label="Вариант C, телефон" hint-size="260px,563px" style="width:260px;height:563px"></x-import>
+    <div style="position:absolute;top:0;left:0;right:0;height:30px;background:#0B1319;display:flex;align-items:center;justify-content:center"><div style="width:72px;height:20px;border-radius:12px;background:#1E2A32"></div></div>
+  </div>
+</section>
+
+<section data-label="Выбор" data-speaker-notes="Здесь выбираем направление. Выбор сохраняется и показывается на последнем слайде." style="background:#101A21;padding:100px 120px 80px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">07 · Выбор</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Выбор варианта</h2>
+    </div>
+    <span style="font-size:28px;color:#938F88">Нажмите на карточку, чтобы выбрать</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px">
+    <button onClick="{{ pickA }}" style="display:flex;flex-direction:column;gap:0;padding:0;text-align:left;cursor:pointer;color:#EDE6DA;background:{{ aCard }};border:2px solid {{ aBorder }}">
+      <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html" w="1440" h="900" label="Вариант A" hint-size="529px,331px" style="width:529px;height:331px;pointer-events:none"></x-import>
+      <span style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px">
+        <span style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">A</span><span style="font-family:'Prata',serif;font-size:44px">Editorial</span></span>
+        <span style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;border:1px solid {{ aBorder }};background:{{ aBg }};color:{{ aColor }}">{{ aMark }}</span>
+      </span>
+    </button>
+    <button onClick="{{ pickB }}" style="display:flex;flex-direction:column;gap:0;padding:0;text-align:left;cursor:pointer;color:#EDE6DA;background:{{ bCard }};border:2px solid {{ bBorder }}">
+      <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3b-grid.dc.html" w="1440" h="900" label="Вариант B" hint-size="529px,331px" style="width:529px;height:331px;pointer-events:none"></x-import>
+      <span style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px">
+        <span style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">B</span><span style="font-family:'Prata',serif;font-size:44px">Grid</span></span>
+        <span style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;border:1px solid {{ bBorder }};background:{{ bBg }};color:{{ bColor }}">{{ bMark }}</span>
+      </span>
+    </button>
+    <button onClick="{{ pickC }}" style="display:flex;flex-direction:column;gap:0;padding:0;text-align:left;cursor:pointer;color:#EDE6DA;background:{{ cCard }};border:2px solid {{ cBorder }}">
+      <x-import component-from-global-scope="mw-live" from="./mw-live.js" src="variants/v3c-silver.dc.html" w="1440" h="900" label="Вариант C" hint-size="529px,331px" style="width:529px;height:331px;pointer-events:none"></x-import>
+      <span style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px">
+        <span style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">C</span><span style="font-family:'Prata',serif;font-size:44px">Silver</span></span>
+        <span style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;border:1px solid {{ cBorder }};background:{{ cBg }};color:{{ cColor }}">{{ cMark }}</span>
+      </span>
+    </button>
+  </div>
+</section>
+
+<section data-label="Для запуска" data-speaker-notes="Что нужно от барбершопа и что подключаем технически. Без длительности услуг и рабочих часов реальные слоты не посчитать — их даст YCLIENTS." style="background:#0B1319;padding:100px 120px 80px;display:flex;flex-direction:column;gap:64px">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">08 · Запуск</span>
+    <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Что нужно для запуска</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88;padding-bottom:16px;border-bottom:1px solid rgba(237,230,218,0.2)">От Man's World</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Адрес, часы работы, телефон, соцсети</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Длительность каждой услуги</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Фото специалистов в оригинале</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Согласие на использование фото интерьера</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Полные описания услуг, цена «Патчи»</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88;padding-bottom:16px;border-bottom:1px solid rgba(237,230,218,0.2)">Техническая часть</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Домен и хостинг</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Подключение записи к YCLIENTS — реальные свободные слоты</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Политика обработки персональных данных</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Логотип в высоком разрешении или вектор</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Следующие шаги" data-speaker-notes="Итог: выбранный вариант и четыре шага до запуска." style="background:#0B1319;display:grid;grid-template-columns:minmax(0,1fr) 640px;overflow:hidden">
+  <div style="padding:100px 120px 80px;display:flex;flex-direction:column;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">09 · Дальше</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Следующие шаги</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.2)">
+      <div style="display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#C9202A">01</span>
+        <span style="font-size:36px">Выбор варианта</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 18px;border:1px solid {{ choiceBorder }};color:{{ choiceColor }}">{{ choiceLabel }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">02</span>
+        <span style="font-size:36px">Передача данных для запуска</span>
+      </div>
+      <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">03</span>
+        <span style="font-size:36px">Подключение записи к YCLIENTS</span>
+      </div>
+      <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">04</span>
+        <span style="font-size:36px">Запуск сайта</span>
+      </div>
+    </div>
+    <img src="assets/logo.jpg" alt="Man's World" style="width:120px;height:120px;display:block;border-radius:16px"></img>
+  </div>
+  <div style="position:relative;overflow:hidden">
+    <img src="assets/wash.jpg" alt="Мойка Man's World" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 60%;filter:saturate(0.92) contrast(1.05)"></img>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const KEY = 'mw-pitch-choice';
+const NAMES = { A: 'Editorial', B: 'Grid', C: 'Silver' };
+
+class Component extends DCLogic {
+  state = { choice: null };
+  componentDidMount() {
+    try { const v = localStorage.getItem(KEY); if (v && NAMES[v]) this.setState({ choice: v }); } catch (e) {}
+  }
+  pick(v) {
+    const next = this.state.choice === v ? null : v;
+    this.setState({ choice: next });
+    try { if (next) localStorage.setItem(KEY, next); else localStorage.removeItem(KEY); } catch (e) {}
+  }
+  renderVals() {
+    const c = this.state.choice;
+    const red = '#C9202A';
+    const out = {};
+    for (const k of ['A', 'B', 'C']) {
+      const on = c === k, l = k.toLowerCase();
+      out[l + 'Label'] = on ? '✓ Вариант выбран' : 'Выбрать вариант ' + k;
+      out[l + 'Bg'] = on ? red : 'transparent';
+      out[l + 'Color'] = on ? '#fff' : '#EDE6DA';
+      out[l + 'Border'] = on ? red : 'rgba(237,230,218,0.35)';
+      out[l + 'Card'] = on ? 'rgba(201,32,42,0.1)' : '#0B1319';
+      out[l + 'Mark'] = on ? '✓' : '';
+      out['pick' + k] = () => this.pick(k);
+    }
+    out.choiceLabel = c ? c + ' · ' + NAMES[c] : 'не выбран';
+    out.choiceColor = c ? '#fff' : '#938F88';
+    out.choiceBorder = c ? red : 'rgba(237,230,218,0.3)';
+    return out;
+  }
+}
+</script>
+</body>
+</html>
