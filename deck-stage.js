@@ -353,6 +353,88 @@
       border: 2px solid transparent;
       background-clip: content-box;
     }
+    /* ── Scroll ("лента") view ──────────────────────────────────────────
+       Every slide laid out top-to-bottom at the viewport width, scrolled
+       like a PDF. The canvas drops its transform and is shrunk with CSS
+       zoom instead (zoom affects layout, so the host scrolls to the real
+       extent and position:fixed slide content still pins to the
+       viewport). Toggled by the top-right switch, ?view=scroll|slides,
+       or the stored per-viewer preference. */
+    :host([data-scroll]) {
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.25) transparent;
+    }
+    :host([data-scroll]) .rail,
+    :host([data-scroll]) .rail-resize { display: none; }
+    :host([data-scroll]) .stage {
+      position: static;
+      display: block;
+      width: 100%;
+      padding: var(--deck-scroll-pad, 24px) 0 calc(var(--deck-scroll-pad, 24px) * 2);
+      box-sizing: border-box;
+    }
+    :host([data-scroll]) .canvas {
+      height: auto !important;
+      margin: 0 auto;
+      background: transparent;
+      box-shadow: none;
+      will-change: auto;
+    }
+    :host([data-scroll]) ::slotted(*) {
+      position: relative !important;
+      inset: auto !important;
+      height: var(--deck-design-h) !important;
+      margin: 0 0 var(--deck-scroll-gap, 48px) !important;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      box-shadow: 0 0 0 1.5px rgba(255,255,255,0.12);
+    }
+    :host([data-scroll]) ::slotted([data-deck-skip]) { display: none !important; }
+
+    .viewtoggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 2147483000;
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      background: rgba(0,0,0,0.78);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      user-select: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      opacity: 0.82;
+      transition: opacity 160ms ease;
+    }
+    .viewtoggle:hover, .viewtoggle:focus-within { opacity: 1; }
+    .viewtoggle .btn {
+      height: 26px;
+      padding: 0 11px;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+    }
+    .viewtoggle .btn svg { width: 13px; height: 13px; }
+    .viewtoggle .btn[aria-pressed="true"] {
+      background: #fff;
+      color: #000;
+    }
+    .viewtoggle .btn[aria-pressed="true"]:hover { background: #fff; color: #000; }
+    :host([noscale]) .viewtoggle,
+    .viewtoggle[data-presenting] { display: none; }
+    @media print { .viewtoggle { display: none; } }
+
     :host([no-rail]) .rail,
     :host([noscale]) .rail { display: none; }
     .rail[data-presenting] { display: none; }
@@ -679,6 +761,12 @@
       // Here the component renumbers natively, so the fallback stands down.
       this._railSkipNumbers = true;
 
+      // Scroll ("лента") view: all slides stacked vertically, scrolled
+      // like a PDF. See the :host([data-scroll]) rules and _setScrollMode.
+      this._scrollMode = false;
+      this._scrollRaf = null;
+      this._onScroll = this._onScroll.bind(this);
+
       this._onKey = this._onKey.bind(this);
       this._onResize = this._onResize.bind(this);
       this._onSlotChange = this._onSlotChange.bind(this);
@@ -725,6 +813,14 @@
       // attribute-keyed transition fires at 0s (changing transition-
       // duration after a transition has started doesn't affect it).
       this._onBeforePrint = () => {
+        // Scroll view zooms the canvas and stacks slides in flow; print
+        // wants the slide-mode geometry (one slide per page). Drop out
+        // for the print and restore afterwards without touching the
+        // stored preference.
+        if (this._scrollMode) {
+          this._printWasScroll = true;
+          this._setScrollMode(false, { persist: false });
+        }
         this._syncPrintPageRule();
         // Self-heal: a departed doc-page may have removed the page-global
         // print-sizing meta this deck deferred to at connect time.
@@ -738,11 +834,27 @@
       this._onAfterPrint = () => {
         this._applyIndex({ showOverlay: false, broadcast: false });
         if (this._freezeStyle) { this._freezeStyle.remove(); this._freezeStyle = null; }
+        if (this._printWasScroll) {
+          this._printWasScroll = false;
+          this._setScrollMode(true, { persist: false });
+        }
       };
       window.addEventListener('beforeprint', this._onBeforePrint);
       window.addEventListener('afterprint', this._onAfterPrint);
       // Initial collection + layout happens via slotchange, which fires on mount.
       this._enableRail();
+      // Initial view: ?view=scroll|slides wins, then the per-viewer
+      // preference, else the classic one-slide stage. Presenter-popup
+      // thumbnail iframes (_snthumb) always stay in slide mode.
+      if (!/[?&]_snthumb=/.test(location.search)) {
+        let view = null;
+        const q = new URLSearchParams(location.search).get('view');
+        if (q === 'scroll' || q === 'slides') view = q;
+        if (!view) {
+          try { view = localStorage.getItem('deck-stage.view'); } catch (e) {}
+        }
+        if (view === 'scroll') this._setScrollMode(true, { persist: false });
+      }
       // Hold the stage hidden until webfonts are ready so the first visible
       // paint has the deck's real typography — the :not(:defined) guard in
       // the page HTML only covers custom-element upgrade, not font load.
@@ -1049,6 +1161,9 @@
       window.removeEventListener('afterprint', this._onAfterPrint);
       if (this._freezeStyle) { this._freezeStyle.remove(); this._freezeStyle = null; }
       this.removeEventListener('click', this._onTap);
+      this.removeEventListener('scroll', this._onScroll);
+      if (this._scrollRaf) cancelAnimationFrame(this._scrollRaf);
+      if (this._scrollObserver) this._scrollObserver.disconnect();
       if (this._hideTimer) clearTimeout(this._hideTimer);
       if (this._mouseIdleTimer) clearTimeout(this._mouseIdleTimer);
       if (this._liveTimer) clearTimeout(this._liveTimer);
@@ -1287,11 +1402,31 @@
         this._focusCurrentThumb();
       });
 
-      this._root.append(style, rail, resize, stage, overlay, menu, confirm);
+      // Slides / scroll view switch — always visible (top-right), unlike
+      // the idle-fading overlay, so a viewer who just wants to scroll the
+      // deck like a PDF can find it on the first screen.
+      const viewToggle = document.createElement('div');
+      viewToggle.className = 'viewtoggle export-hidden';
+      viewToggle.setAttribute('role', 'group');
+      viewToggle.setAttribute('aria-label', 'Режим просмотра');
+      viewToggle.setAttribute('data-omelette-chrome', '');
+      viewToggle.innerHTML = `
+        <button class="btn slides" type="button" aria-pressed="true" title="По одному слайду (стрелки ←/→)">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/></svg>Слайды
+        </button>
+        <button class="btn scroll" type="button" aria-pressed="false" title="Все слайды подряд, прокрутка сверху вниз">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="1.5" width="10" height="5.5" rx="1"/><rect x="3" y="9" width="10" height="5.5" rx="1"/></svg>Лента
+        </button>
+      `;
+      viewToggle.querySelector('.slides').addEventListener('click', () => this._setScrollMode(false));
+      viewToggle.querySelector('.scroll').addEventListener('click', () => this._setScrollMode(true));
+
+      this._root.append(style, rail, resize, stage, overlay, menu, confirm, viewToggle);
       this._canvas = canvas;
       this._stage = stage;
       this._slot = slot;
       this._overlay = overlay;
+      this._viewToggle = viewToggle;
       this._rail = rail;
       this._resize = resize;
       this._menu = menu;
@@ -1452,6 +1587,93 @@
       this._markLastVisible();
       this._syncCount();
       this._renderRail();
+      if (this._scrollMode) this._observeScrollSlides();
+    }
+
+    // ── Scroll ("лента") view ─────────────────────────────────────────────
+
+    _setScrollMode(on, { persist = true } = {}) {
+      on = !!on;
+      if (on === this._scrollMode) return;
+      this._scrollMode = on;
+      if (persist) {
+        try { localStorage.setItem('deck-stage.view', on ? 'scroll' : 'slides'); } catch (e) {}
+      }
+      if (on) {
+        this.setAttribute('data-scroll', '');
+        this.addEventListener('scroll', this._onScroll, { passive: true });
+        this._observeScrollSlides();
+        this._fit();
+        // Land on the slide that was current in slide mode.
+        this._scrollToSlide(this._index, 'auto');
+      } else {
+        this.removeEventListener('scroll', this._onScroll);
+        if (this._scrollRaf) { cancelAnimationFrame(this._scrollRaf); this._scrollRaf = null; }
+        if (this._scrollObserver) { this._scrollObserver.disconnect(); this._scrollObserver = null; }
+        this.removeAttribute('data-scroll');
+        this.scrollTop = 0;
+        if (this._canvas) this._canvas.style.zoom = '';
+        if (this._stage) this._stage.style.height = '';
+        this._fit();
+        // Back to one active slide (the one the viewer was reading).
+        this._applyIndex({ showOverlay: false, broadcast: true, reason: 'api' });
+      }
+      this._syncViewToggle();
+    }
+
+    _syncViewToggle() {
+      if (!this._viewToggle) return;
+      const on = this._scrollMode;
+      this._viewToggle.querySelector('.slides').setAttribute('aria-pressed', on ? 'false' : 'true');
+      this._viewToggle.querySelector('.scroll').setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
+    /** In scroll view every slide is visible, so [data-deck-active] (which
+     *  gates entrance animations and lazy slide content like <mw-live>)
+     *  is granted as a slide approaches the viewport and kept from then
+     *  on — leaving it set avoids replaying entrances on every pass. */
+    _observeScrollSlides() {
+      if (this._scrollObserver) this._scrollObserver.disconnect();
+      this._scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) en.target.setAttribute('data-deck-active', '');
+        });
+      }, { root: this, rootMargin: '60% 0px 60% 0px' });
+      this._slides.forEach((s) => this._scrollObserver.observe(s));
+    }
+
+    _scrollToSlide(i, behavior = 'smooth') {
+      const slide = this._slides[i];
+      if (!slide || !this._scrollMode) return;
+      const host = this.getBoundingClientRect();
+      const r = slide.getBoundingClientRect();
+      const pad = 24;
+      const top = Math.max(0, r.top - host.top + this.scrollTop - pad);
+      try { this.scrollTo({ top, behavior }); } catch (e) { this.scrollTop = top; }
+    }
+
+    /** Track the slide under the viewport's centre line as the viewer
+     *  scrolls — drives the counter, the #N hash and slidechange. */
+    _onScroll() {
+      if (this._scrollRaf) return;
+      this._scrollRaf = requestAnimationFrame(() => {
+        this._scrollRaf = null;
+        if (!this._scrollMode || !this._slides.length) return;
+        const host = this.getBoundingClientRect();
+        const mid = host.top + this.clientHeight / 2;
+        let best = -1, bestDist = Infinity;
+        this._slides.forEach((s, i) => {
+          if (s.hasAttribute('data-deck-skip')) return;
+          const r = s.getBoundingClientRect();
+          if (r.top <= mid && r.bottom > mid) { best = i; bestDist = 0; return; }
+          const d = r.top > mid ? r.top - mid : mid - r.bottom;
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        if (best >= 0 && best !== this._index) {
+          this._index = best;
+          this._applyIndex({ showOverlay: false, broadcast: true, reason: 'scroll' });
+        }
+      });
     }
 
     /** Tag the last non-skipped slide so print CSS can drop its
@@ -1505,10 +1727,16 @@
       // (reload banner path in viewer-handle.ts) lands on the current slide,
       // not the stale deep-link hash from initial load.
       try { history.replaceState(null, '', '#' + (curr + 1)); } catch (e) {}
-      this._slides.forEach((s, i) => {
-        if (i === curr) s.setAttribute('data-deck-active', '');
-        else s.removeAttribute('data-deck-active');
-      });
+      if (this._scrollMode) {
+        // Scroll view: every slide stays visible and _observeScrollSlides
+        // owns [data-deck-active]; navigation means scrolling there.
+        if (reason !== 'scroll') this._scrollToSlide(curr, reason === 'init' ? 'auto' : 'smooth');
+      } else {
+        this._slides.forEach((s, i) => {
+          if (i === curr) s.setAttribute('data-deck-active', '');
+          else s.removeAttribute('data-deck-active');
+        });
+      }
       this._syncCount();
       // Follow-scroll on every navigation (init deep-link, keyboard, click,
       // tap, external goTo) — the only time we *don't* want the rail to
@@ -1573,7 +1801,7 @@
       // corrects it.
       if (!this._railEnabled || !this._railVisible || this.hasAttribute('no-rail')
           || this.hasAttribute('noscale') || this._presenting || this._previewMode
-          || NARROW_MQ.matches) return 0;
+          || this._scrollMode || NARROW_MQ.matches) return 0;
       return this._railPx || 0;
     }
 
@@ -1589,6 +1817,39 @@
         if (this._overlay) this._overlay.style.marginLeft = '0';
         return;
       }
+      if (this._scrollMode) {
+        // Fit the design width to the host's scroll viewport (clientWidth
+        // excludes the scrollbar) with a small gutter. CSS zoom scales
+        // layout too, so the scroll extent follows for free; engines
+        // without zoom fall back to transform + a negative bottom margin
+        // that trims the un-scaled layout height.
+        if (stage) stage.style.left = '0';
+        if (this._overlay) this._overlay.style.marginLeft = '0';
+        const pad = 24;
+        const vw = Math.max(200, (this.clientWidth || window.innerWidth) - pad * 2);
+        const s = vw / this.designWidth;
+        const canZoom = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('zoom', '1');
+        if (canZoom) {
+          this._canvas.style.transform = 'none';
+          this._canvas.style.transformOrigin = '';
+          this._canvas.style.marginBottom = '';
+          this._canvas.style.zoom = String(s);
+        } else {
+          const gap = 48;
+          const n = this._slides.filter((x) => !x.hasAttribute('data-deck-skip')).length || 1;
+          const totalH = n * (this.designHeight + gap);
+          this._canvas.style.zoom = '';
+          this._canvas.style.transformOrigin = 'top left';
+          this._canvas.style.transform = `scale(${s})`;
+          this._canvas.style.marginLeft = (pad + (vw - this.designWidth * s) / 2) + 'px';
+          this._canvas.style.marginBottom = (-(1 - s) * totalH) + 'px';
+        }
+        return;
+      }
+      this._canvas.style.zoom = '';
+      this._canvas.style.transformOrigin = '';
+      this._canvas.style.marginBottom = '';
+      this._canvas.style.marginLeft = '';
       const rw = this._railWidth();
       if (stage) stage.style.left = rw + 'px';
       // Overlay is centred on the viewport via left:50% + translate(-50%);
@@ -1715,6 +1976,12 @@
       const hard = !this._railEnabled || this._presenting || this._previewMode;
       if (hard) this._rail.setAttribute('data-presenting', '');
       else this._rail.removeAttribute('data-presenting');
+      // The view switch is chrome too: hide it while presenting / in the
+      // host's Preview mode so nothing sits over the slide corner.
+      if (this._viewToggle) {
+        if (this._presenting || this._previewMode) this._viewToggle.setAttribute('data-presenting', '');
+        else this._viewToggle.removeAttribute('data-presenting');
+      }
       if (!this._railVisible) this._rail.setAttribute('data-user-hidden', '');
       else this._rail.removeAttribute('data-user-hidden');
       // translateX hide leaves thumbs (tabIndex=0) in the tab order —
@@ -1725,6 +1992,8 @@
     _onTap(e) {
       // Touch-only — keyboard + the overlay toolbar cover nav on desktop.
       if (FINE_POINTER_MQ.matches) return;
+      // Scroll view navigates by scrolling; a tap must not jump slides.
+      if (this._scrollMode) return;
       // Only taps that land on the stage (slide content or letterbox); the
       // overlay / rail / menus are siblings with their own click handlers.
       const path = e.composedPath();

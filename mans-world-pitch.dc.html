@@ -221,6 +221,7 @@ button{font-family:inherit}
       <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуга — круглая кнопка «+»</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ demoA }}" style="height:80px;border:0;background:#EDE6DA;color:#0B1319;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">▶ Показать демо</button>
       <button onClick="{{ pickA }}" style="height:80px;border:1px solid {{ aBorder }};background:{{ aBg }};color:{{ aColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ aLabel }}</button>
       <a href="mans-world-v3.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
     </div>
@@ -247,6 +248,7 @@ button{font-family:inherit}
       <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуги — плитки-карточки</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ demoB }}" style="height:80px;border:0;background:#EDE6DA;color:#0B1319;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">▶ Показать демо</button>
       <button onClick="{{ pickB }}" style="height:80px;border:1px solid {{ bBorder }};background:{{ bBg }};color:{{ bColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ bLabel }}</button>
       <a href="variants/v3b-grid.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
     </div>
@@ -273,6 +275,7 @@ button{font-family:inherit}
       <span style="padding:22px 0;border-bottom:1px solid rgba(237,230,218,0.14);font-size:28px;line-height:1.35">Услуга — квадратный чекбокс</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
+      <button onClick="{{ demoC }}" style="height:80px;border:0;background:#EDE6DA;color:#0B1319;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">▶ Показать демо</button>
       <button onClick="{{ pickC }}" style="height:80px;border:1px solid {{ cBorder }};background:{{ cBg }};color:{{ cColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ cLabel }}</button>
       <a href="variants/v3c-silver.dc.html" target="_blank" rel="noopener" style="height:64px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;text-decoration:underline;text-underline-offset:6px">Открыть сайт ↗</a>
     </div>
@@ -293,7 +296,10 @@ button{font-family:inherit}
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.14em;text-transform:uppercase;color:#C9202A">07 · Выбор</span>
       <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:72px;line-height:1.05">Выбор варианта</h2>
     </div>
-    <span style="font-size:28px;color:#938F88">Нажмите на карточку, чтобы выбрать</span>
+    <div style="display:flex;align-items:center;gap:24px">
+      <span style="font-size:28px;color:#938F88">Нажмите на карточку, чтобы выбрать</span>
+      <button onClick="{{ demoChosen }}" style="height:72px;padding:0 32px;border:0;background:{{ dcBg }};color:{{ dcColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ dcLabel }}</button>
+    </div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px">
     <button onClick="{{ pickA }}" style="display:flex;flex-direction:column;gap:0;padding:0;text-align:left;cursor:pointer;color:#EDE6DA;background:{{ aCard }};border:2px solid {{ aBorder }}">
@@ -337,7 +343,7 @@ button{font-family:inherit}
     <div style="display:flex;flex-direction:column;gap:8px">
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88;padding-bottom:16px;border-bottom:1px solid rgba(237,230,218,0.2)">Техническая часть</span>
       <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Домен и хостинг</span>
-      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Подключение записи к YCLIENTS — реальные свободные слоты</span>
+      <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Запись: подключение к YCLIENTS или свой аналог — реальные свободные слоты</span>
       <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Политика обработки персональных данных</span>
       <span style="font-size:32px;line-height:1.35;padding:18px 0;border-bottom:1px solid rgba(237,230,218,0.12)">Логотип в высоком разрешении или вектор</span>
     </div>
@@ -354,7 +360,7 @@ button{font-family:inherit}
       <div style="display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
         <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#C9202A">01</span>
         <span style="font-size:36px">Выбор варианта</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 18px;border:1px solid {{ choiceBorder }};color:{{ choiceColor }}">{{ choiceLabel }}</span>
+        <span style="display:flex;gap:12px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 18px;border:1px solid {{ choiceBorder }};color:{{ choiceColor }}">{{ choiceLabel }}</span><button onClick="{{ demoChosen }}" style="height:54px;padding:0 20px;border:0;background:{{ dcBg }};color:{{ dcColor }};font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer">▶ Демо</button></span>
       </div>
       <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
         <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">02</span>
@@ -362,7 +368,7 @@ button{font-family:inherit}
       </div>
       <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
         <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">03</span>
-        <span style="font-size:36px">Подключение записи к YCLIENTS</span>
+        <span style="font-size:36px">Подключение записи к YCLIENTS или реализация своего аналога</span>
       </div>
       <div style="display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(237,230,218,0.14)">
         <span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#938F88">04</span>
@@ -377,16 +383,48 @@ button{font-family:inherit}
 </section>
 
 </x-import>
+
+<sc-if value="{{ demoOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:1000;background:#06090B;display:flex;flex-direction:column">
+    <div style="flex:0 0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px;border-bottom:1px solid rgba(237,230,218,0.14);background:#0B1319">
+      <div style="display:flex;align-items:center;gap:14px;min-width:0">
+        <img src="assets/logo.jpg" alt="Man's World" style="width:36px;height:36px;border-radius:8px;display:block"></img>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#B3ADA3;white-space:nowrap">Демо · {{ demoName }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button onClick="{{ demoDesktop }}" style="height:40px;padding:0 16px;border:1px solid {{ dtBorder }};background:{{ dtBg }};color:{{ dtColor }};font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Десктоп</button>
+        <button onClick="{{ demoMobile }}" style="height:40px;padding:0 16px;border:1px solid {{ mbBorder }};background:{{ mbBg }};color:{{ mbColor }};font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Телефон</button>
+        <button onClick="{{ demoReload }}" style="height:40px;padding:0 16px;border:1px solid rgba(237,230,218,0.3);background:transparent;color:#EDE6DA;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Сначала</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button onClick="{{ demoChoose }}" style="height:40px;padding:0 16px;border:1px solid {{ chBorder }};background:{{ chBg }};color:{{ chColor }};font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">{{ chLabel }}</button>
+        <button onClick="{{ demoClose }}" aria-label="Закрыть демо" style="height:40px;padding:0 16px;border:0;background:#EDE6DA;color:#0B1319;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Закрыть ✕</button>
+      </div>
+    </div>
+    <div style="flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;padding:{{ demoPad }}">
+      <div style="width:{{ demoW }};max-width:100%;height:100%;background:#000;border:{{ demoBorder }};border-radius:{{ demoRadius }};overflow:hidden;position:relative">
+        <sc-if value="{{ demoIsMobile }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:0;left:0;right:0;height:44px;background:#0B1319;z-index:2;display:flex;align-items:center;justify-content:center"><div style="width:110px;height:30px;background:#1E2A32;border-radius:16px"></div></div>
+        </sc-if>
+        <iframe key="{{ demoKey }}" src="{{ demoSrc }}" title="Демо сайта" style="width:100%;height:100%;border:0;display:block;background:#000"></iframe>
+      </div>
+    </div>
+  </div>
+</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const KEY = 'mw-pitch-choice';
 const NAMES = { A: 'Editorial', B: 'Grid', C: 'Silver' };
+const SRC = { A: 'mans-world-v3.dc.html', B: 'variants/v3b-grid.dc.html', C: 'variants/v3c-silver.dc.html' };
 
 class Component extends DCLogic {
-  state = { choice: null };
+  state = { choice: null, demo: null };
   componentDidMount() {
     try { const v = localStorage.getItem(KEY); if (v && NAMES[v]) this.setState({ choice: v }); } catch (e) {}
+    this.onKey = e => { if (e.key === 'Escape' && this.state.demo) { e.stopPropagation(); this.setState({ demo: null }); } };
+    window.addEventListener('keydown', this.onKey, true);
   }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey, true); }
   pick(v) {
     const next = this.state.choice === v ? null : v;
     this.setState({ choice: next });
@@ -406,6 +444,35 @@ class Component extends DCLogic {
       out[l + 'Mark'] = on ? '✓' : '';
       out['pick' + k] = () => this.pick(k);
     }
+    const d = this.state.demo;
+    const dv = d ? d.v : null;
+    const red2 = red;
+    out.demoOpen = !!d;
+    out.demoName = d ? dv + ' · ' + NAMES[dv] : '';
+    out.demoIsMobile = !!(d && d.mobile);
+    out.demoSrc = d ? SRC[dv] + (d.mobile ? '?mw_mobile=1&r=' : '?r=') + d.r : '';
+    out.demoKey = d ? dv + (d.mobile ? 'm' : 'd') + d.r : '';
+    out.demoW = d && d.mobile ? '410px' : '100%';
+    out.demoPad = d && d.mobile ? '20px' : '0';
+    out.demoBorder = d && d.mobile ? '10px solid #1E2A32' : '0';
+    out.demoRadius = d && d.mobile ? '44px' : '0';
+    const seg = on => ({ bg: on ? '#EDE6DA' : 'transparent', color: on ? '#0B1319' : '#EDE6DA', border: on ? '#EDE6DA' : 'rgba(237,230,218,0.3)' });
+    const sd = seg(d && !d.mobile), sm = seg(d && d.mobile);
+    out.dtBg = sd.bg; out.dtColor = sd.color; out.dtBorder = sd.border;
+    out.mbBg = sm.bg; out.mbColor = sm.color; out.mbBorder = sm.border;
+    out.demoDesktop = () => this.setState(s => ({ demo: { ...s.demo, mobile: false } }));
+    out.demoMobile = () => this.setState(s => ({ demo: { ...s.demo, mobile: true } }));
+    out.demoReload = () => this.setState(s => ({ demo: { ...s.demo, r: s.demo.r + 1 } }));
+    out.demoClose = () => this.setState({ demo: null });
+    const chosenNow = d && c === dv;
+    out.chLabel = chosenNow ? '✓ Выбран' : 'Выбрать этот вариант';
+    out.chBg = chosenNow ? red2 : 'transparent'; out.chColor = chosenNow ? '#fff' : '#EDE6DA'; out.chBorder = chosenNow ? red2 : 'rgba(237,230,218,0.3)';
+    out.demoChoose = () => { if (dv) this.pick(dv); };
+    for (const k of ['A', 'B', 'C']) out['demo' + k] = () => this.setState({ demo: { v: k, mobile: false, r: 1 } });
+    out.demoChosen = () => { if (c) this.setState({ demo: { v: c, mobile: false, r: 1 } }); };
+    out.dcLabel = c ? '▶ Демо варианта ' + c : 'Сначала выберите вариант';
+    out.dcBg = c ? '#EDE6DA' : 'rgba(237,230,218,0.1)';
+    out.dcColor = c ? '#0B1319' : '#938F88';
     out.choiceLabel = c ? c + ' · ' + NAMES[c] : 'не выбран';
     out.choiceColor = c ? '#fff' : '#938F88';
     out.choiceBorder = c ? red : 'rgba(237,230,218,0.3)';
