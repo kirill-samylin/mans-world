@@ -72,17 +72,17 @@ button{font-family:inherit}
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;flex:1">
     <div style="display:flex;flex-direction:column;gap:28px">
-      <img src="assets/bar.jpg" alt="Стойка и витрина" style="width:100%;height:360px;object-fit:cover;object-position:50% 40%;display:block"></img>
+      <div style="width:100%;height:360px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html" w="1440" h="900" label="Главный экран сайта" hint-size="100%,360px" style="width:100%;height:360px;pointer-events:none"></x-import></div>
       <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Свой образ</span>
       <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Логотип, реальный интерьер и тон бренда — без чужих карточек рядом</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:28px">
-      <img src="assets/clipper.jpg" alt="Работа мастера" style="width:100%;height:360px;object-fit:cover;object-position:60% 50%;display:block"></img>
+      <div style="width:100%;height:360px;border:1px solid rgba(237,230,218,0.2);background:#0B1319;overflow:hidden;display:flex;justify-content:center;gap:24px;padding:24px 0 0"><div style="width:200px;flex:0 0 auto;border:6px solid #1E2A32;border-bottom:0;border-radius:30px 30px 0 0;overflow:hidden;background:#000"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=services" w="390" h="844" label="Выбор услуг" hint-size="188px,330px" style="width:188px;height:330px;pointer-events:none"></x-import></div><div style="width:200px;flex:0 0 auto;border:6px solid #1E2A32;border-bottom:0;border-radius:30px 30px 0 0;overflow:hidden;background:#000"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?mw_mobile=1&amp;step=time" w="390" h="844" label="Выбор времени" hint-size="188px,330px" style="width:188px;height:330px;pointer-events:none"></x-import></div></div>
       <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Запись с телефона</span>
       <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Услуги, специалист, время и контакты — на одной странице</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:28px">
-      <img src="assets/wash.jpg" alt="Мойка" style="width:100%;height:360px;object-fit:cover;object-position:40% 60%;display:block"></img>
+      <div style="width:100%;height:360px;border:1px solid rgba(237,230,218,0.2);background:#0B1319;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:32px"><div style="width:150px;height:150px;border:1px solid rgba(237,230,218,0.3);padding:12px;background:#EDE6DA;display:grid;grid-template-columns:repeat(7,1fr);gap:3px"><span style="background:#0B1319;grid-column:1/4;grid-row:1/4"></span><span style="background:#0B1319;grid-column:5/8;grid-row:1/4"></span><span style="background:#0B1319;grid-column:1/4;grid-row:5/8"></span><span style="background:#0B1319;grid-column:5/6;grid-row:5/6"></span><span style="background:#0B1319;grid-column:7/8;grid-row:5/6"></span><span style="background:#0B1319;grid-column:6/7;grid-row:6/7"></span><span style="background:#0B1319;grid-column:5/6;grid-row:7/8"></span><span style="background:#0B1319;grid-column:7/8;grid-row:7/8"></span></div><span style="font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:0.08em;color:#EDE6DA;border:1px dashed rgba(237,230,218,0.4);padding:10px 18px">mansworld.[домен]</span></div>
       <span style="font-family:'Prata',serif;font-size:44px;line-height:1.1">Одна ссылка</span>
       <span style="font-size:30px;line-height:1.4;color:#CFC9BE">Для соцсетей, визиток и QR-кода у входа</span>
     </div>
@@ -121,37 +121,31 @@ button{font-family:inherit}
   </div>
   <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px">
     <div style="display:flex;flex-direction:column;gap:20px">
-      <img src="assets/corridor-mobile.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"></img>
+      <div style="width:100%;height:300px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html" w="1440" h="1400" label="Главный экран" hint-size="100%,300px" style="width:100%;height:300px;pointer-events:none"></x-import></div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">01</span>
       <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Главный экран</span>
       <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Фото зала, название, кнопка записи</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
-      <div style="width:100%;height:300px;background:#0B1319;border:1px solid rgba(237,230,218,0.18);display:flex;flex-direction:column;justify-content:center;gap:18px;padding:20px">
-        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px"><span style="min-width:0">Окантовка</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">1 000</span></span>
-        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px"><span style="min-width:0">Укладка</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">700</span></span>
-        <span style="display:flex;justify-content:space-between;gap:12px;font-size:24px;color:#C9202A"><span style="min-width:0">Черная маска</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">1 300</span></span>
-      </div>
+      <div style="width:100%;height:300px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?step=sec:services" w="1440" h="1400" label="Услуги и цены" hint-size="100%,300px" style="width:100%;height:300px;pointer-events:none"></x-import></div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">02</span>
       <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Услуги и цены</span>
       <span style="font-size:26px;line-height:1.4;color:#CFC9BE">16 позиций, выбор нажатием</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
-      <img src="assets/bar.jpg" alt="" style="width:100%;height:300px;object-fit:cover;object-position:50% 35%;display:block"></img>
+      <div style="width:100%;height:300px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?step=sec:atmos" w="1440" h="1400" label="Атмосфера" hint-size="100%,300px" style="width:100%;height:300px;pointer-events:none"></x-import></div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">03</span>
       <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Атмосфера</span>
       <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Цвета и материалы интерьера</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
-      <img src="assets/scissors.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"></img>
+      <div style="width:100%;height:300px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?step=sec:gallery" w="1440" h="1400" label="Интерьер" hint-size="100%,300px" style="width:100%;height:300px;pointer-events:none"></x-import></div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">04</span>
       <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Интерьер</span>
       <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Галерея с просмотром на весь экран</span>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
-      <div style="width:100%;height:300px;background:repeating-linear-gradient(135deg,#0E171D 0 14px,#121C23 14px 28px);border:1px solid rgba(237,230,218,0.18);display:flex;align-items:center;justify-content:center">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#B3ADA3;background:#101A21;padding:6px 12px">карта</span>
-      </div>
+      <div style="width:100%;height:300px;border:1px solid rgba(237,230,218,0.2);background:#000;overflow:hidden"><x-import component-from-global-scope="mw-live" from="./mw-live.js" src="mans-world-v3.dc.html?step=sec:contacts" w="1440" h="1400" label="Контакты" hint-size="100%,300px" style="width:100%;height:300px;pointer-events:none"></x-import></div>
       <span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#938F88">05</span>
       <span style="font-family:'Prata',serif;font-size:36px;line-height:1.15">Контакты</span>
       <span style="font-size:26px;line-height:1.4;color:#CFC9BE">Адрес, часы, телефон, схема проезда</span>

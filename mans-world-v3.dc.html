@@ -484,6 +484,11 @@ class Component extends DCLogic {
       setTimeout(() => { const el = document.getElementById('grp-cuts'); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 120); }, 400);
       return;
     }
+    if (p && p.indexOf('sec:') === 0) {
+      const id = p.slice(4);
+      setTimeout(() => { const el = document.getElementById(id); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 64); }, 500);
+      return;
+    }
     if (p === 'none') return;
     const step = p === 'master' ? 0 : p === 'time' ? 1 : p === 'contacts' ? 2 : 3;
     this.setState({ sel: { cut: true, beard: true }, sheet: true, step, master: step > 0 ? 'petros' : null, di: 1, time: step > 1 ? '12:00' : null, name: step > 1 ? 'Алексей' : '', phone: step > 1 ? '+7 (900) 123-45-67' : '' });
