@@ -37,7 +37,7 @@ button,input,textarea{font-family:inherit}
 <sc-if value="{{ pageVisible }}" hint-placeholder-val="{{ true }}">
 
 <header style="position:fixed;top:{{ topInset }};left:0;right:0;z-index:40">
-  <div style="height:64px;padding:0 clamp(14px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(11,19,25,0.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,218,0.14)">
+  <div style="height:64px;padding:0 clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(11,19,25,0.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(237,230,218,0.14)">
     <a href="#top" onClick="{{ goTop }}" style="display:flex;align-items:center;gap:12px" aria-label="Man's World — наверх">
       <img src="assets/logo.jpg" alt="Man's World" style="width:40px;height:40px;display:block;border-radius:9px"></img>
       <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
@@ -45,14 +45,16 @@ button,input,textarea{font-family:inherit}
       </sc-if>
     </a>
     <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
-      <nav style="display:flex;gap:28px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase">
-        <a href="#services" onClick="{{ goServices }}" style="color:#B3ADA3" style-hover="color:#fff">01 Услуги</a>
-        <a href="#atmos" onClick="{{ goAtmos }}" style="color:#B3ADA3" style-hover="color:#fff">02 Атмосфера</a>
-        <a href="#gallery" onClick="{{ goGallery }}" style="color:#B3ADA3" style-hover="color:#fff">03 Интерьер</a>
-        <a href="#contacts" onClick="{{ goContacts }}" style="color:#B3ADA3" style-hover="color:#fff">04 Контакты</a>
+      <nav style="display:flex;gap:20px;white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase">
+        <a href="#services" onClick="{{ goServices }}" style="color:#B3ADA3" style-hover="color:#fff">Услуги</a>
+        <a href="#atmos" onClick="{{ goAtmos }}" style="color:#B3ADA3" style-hover="color:#fff">Атмосфера</a>
+        <a href="#gallery" onClick="{{ goGallery }}" style="color:#B3ADA3" style-hover="color:#fff">Интерьер</a>
+        <a href="#shop" onClick="{{ goShop }}" style="color:#B3ADA3" style-hover="color:#fff">Магазин</a>
+        <a href="#loyalty" onClick="{{ goLoyalty }}" style="color:#B3ADA3" style-hover="color:#fff">Бонусы</a>
+        <a href="#contacts" onClick="{{ goContacts }}" style="color:#B3ADA3" style-hover="color:#fff">Контакты</a>
       </nav>
     </sc-if>
-    <button onClick="{{ headerCta }}" style="height:44px;padding:0 18px;background:#EDE6DA;color:#0B1319;border:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#C9202A;color:#fff">Записаться</button>
+    <div style="display:flex;gap:8px;align-items:center"><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openLoc }}" aria-label="Сменить барбершоп" style="height:44px;padding:0 12px;background:none;border:0;color:#B3ADA3;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px" style-hover="color:#EDE6DA"><span style="width:6px;height:6px;background:#C9202A;border-radius:50%;flex:0 0 auto"></span>{{ locName }}</button></sc-if><button onClick="{{ openCab }}" aria-label="Личный кабинет" style="height:44px;padding:0 14px;background:transparent;color:#EDE6DA;border:1px solid rgba(237,230,218,0.3);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap" style-hover="border-color:#EDE6DA">{{ cabLabel }}</button><button onClick="{{ headerCta }}" style="flex:0 0 auto;height:44px;padding:0 16px;background:#EDE6DA;color:#0B1319;border:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#C9202A;color:#fff">Записаться</button></div>
   </div>
 </header>
 
@@ -72,7 +74,7 @@ button,input,textarea{font-family:inherit}
       <button onClick="{{ goServices }}" style="flex:1 1 180px;max-width:280px;height:60px;background:#C9202A;color:#fff;border:0;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer" style-hover="background:#EDE6DA;color:#0B1319">Записаться →</button>
       <button onClick="{{ goServices }}" style="flex:0 1 140px;height:60px;background:transparent;color:#EDE6DA;border:1px solid rgba(237,230,218,0.35);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer" style-hover="border-color:#EDE6DA">Цены</button>
     </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3"><span style="padding:5px 8px;border:1px dashed rgba(237,230,218,0.35)">[Адрес]</span><span style="padding:5px 8px;border:1px dashed rgba(237,230,218,0.35)">[Часы]</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3"><span style="padding:5px 8px;border:1px solid rgba(237,230,218,0.35)">{{ locShort }}</span><span style="padding:5px 8px;border:1px solid rgba(237,230,218,0.35)">{{ locHours }}</span></div>
   </div>
 </section>
 
@@ -87,7 +89,7 @@ button,input,textarea{font-family:inherit}
 <section id="services" data-screen-label="Услуги и цены" style="background:#0B1319;padding:clamp(56px,8vw,120px) 0 clamp(56px,8vw,120px)">
   <div style="padding:0 clamp(14px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px 48px;align-items:end">
     <div style="display:flex;flex-direction:column;gap:14px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">01 / Услуги и цены</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Услуги и цены</span>
       <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(34px,5vw,72px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Выберите<br>услуги</h2>
     </div>
     <p style="margin:0;font-size:16px;line-height:1.5;color:#B3ADA3;max-width:460px;text-wrap:pretty">Отметьте одну или несколько услуг, затем выберите удобное время. Цены фиксированные, в рублях. Стрижки, борода, бритьё и камуфляж — для категории мастера «Премиум-барбер».</p>
@@ -112,33 +114,23 @@ button,input,textarea{font-family:inherit}
           <div style="padding:10px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">Нажмите «+», чтобы добавить услугу в запись</div>
           <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="3">
             <div style="border-bottom:1px solid rgba(237,230,218,0.12);background:{{ s.rowBg }};transition:background .15s">
-              <button onClick="{{ s.onToggle }}" aria-pressed="{{ s.selected }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:14px;align-items:start;padding:18px 0 14px;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer;min-height:68px">
+              <button onClick="{{ s.onToggle }}" aria-pressed="{{ s.selected }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:14px;align-items:start;padding:18px 0 16px;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer;min-height:68px">
                 <span style="padding-top:5px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#938F88">{{ s.num }}</span>
                 <span style="display:flex;flex-direction:column;gap:5px;min-width:0;padding-top:3px">
                   <span style="font-family:'Prata',serif;font-weight:400;font-size:clamp(15px,1.3vw,18px);line-height:1.25">{{ s.name }}</span>
                   <sc-if value="{{ s.note }}" hint-placeholder-val="{{ false }}">
                     <span style="font-size:14px;color:#938F88">{{ s.note }}</span>
                   </sc-if>
+                  <sc-if value="{{ s.hasDesc }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size:14px;line-height:1.5;color:#CFC9BE;max-width:560px;text-wrap:pretty;padding-top:2px">{{ s.desc }}</span>
+                  </sc-if>
                 </span>
                 <span style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:2px">
                   <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(17px,1.5vw,22px);font-weight:500;white-space:nowrap;color:{{ s.priceColor }}">{{ s.priceLabel }}</span>
                   <span style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;color:{{ s.tagColor }};border:1px solid {{ s.tagBorder }};background:{{ s.tagBg }}">{{ s.plusMark }}</span>
-                  <sc-if value="{{ s.showVerify }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 6px;border:1px dashed #C9202A;color:#FF6B70;white-space:nowrap">уточнить</span>
-                  </sc-if>
+                  
                 </span>
               </button>
-              <sc-if value="{{ s.hasDesc }}" hint-placeholder-val="{{ false }}">
-                <div style="padding:0 0 14px 50px;display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-                  <sc-if value="{{ s.descOpen }}" hint-placeholder-val="{{ false }}">
-                    <p style="margin:0;font-size:15px;line-height:1.5;color:#CFC9BE;max-width:560px;text-wrap:pretty;animation:mwFade .2s ease">{{ s.desc }}</p>
-                    <sc-if value="{{ s.showTrunc }}" hint-placeholder-val="{{ false }}">
-                      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 6px;border:1px dashed rgba(237,230,218,0.35);color:#938F88">полный текст — уточнить</span>
-                    </sc-if>
-                  </sc-if>
-                  <button onClick="{{ s.onDesc }}" style="background:none;border:0;padding:6px 0;color:#938F88;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;cursor:pointer" style-hover="color:#fff">{{ s.descLabel }}</button>
-                </div>
-              </sc-if>
             </div>
           </sc-for>
         </div>
@@ -150,7 +142,7 @@ button,input,textarea{font-family:inherit}
 <section id="atmos" data-screen-label="Атмосфера" style="background:#101A21;padding:clamp(56px,8vw,120px) clamp(14px,3vw,32px);border-top:1px solid rgba(237,230,218,0.14)">
   <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.5vw,20px);align-items:end">
     <div style="grid-column:1 / -1;display:flex;flex-direction:column;gap:14px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">02 / Атмосфера</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Атмосфера</span>
       <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(34px,6.5vw,110px);line-height:0.92;letter-spacing:0;text-transform:uppercase;text-wrap:balance">Синий.<br>Красный.<br>Неон.</h2>
     </div>
     <img src="assets/bar.jpg" alt="Стойка с красной стеной, неоновой лампой и витриной средств для ухода" style="grid-column:1 / span 7;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:40% 40%;display:block;filter:saturate(0.92) contrast(1.05);margin-top:clamp(8px,2vw,24px)"></img>
@@ -164,7 +156,7 @@ button,input,textarea{font-family:inherit}
 <section id="gallery" data-screen-label="Интерьер" style="background:#0B1319;padding:clamp(56px,8vw,120px) clamp(14px,3vw,32px);border-top:1px solid rgba(237,230,218,0.14)">
   <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px">
     <div style="display:flex;flex-direction:column;gap:14px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">03 / Интерьер</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Интерьер</span>
       <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(34px,5vw,72px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Интерьер</h2>
     </div>
     <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ galleryCount }} фото · нажмите, чтобы открыть</span>
@@ -179,24 +171,88 @@ button,input,textarea{font-family:inherit}
   </div>
 </section>
 
+<section id="shop" data-screen-label="Магазин" style="background:#0B1319;padding:clamp(56px,8vw,120px) clamp(14px,3vw,32px);border-top:1px solid rgba(237,230,218,0.14)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px 48px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Магазин</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(34px,5vw,72px);line-height:0.95;text-transform:uppercase">Уход<br>с собой</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:460px">
+      <p style="margin:0;font-size:16px;line-height:1.5;color:#B3ADA3;text-wrap:pretty">Средства для волос и бороды, которыми работают мастера. Отложите онлайн — соберём к вашему визиту. Оплата только при получении в барбершопе: картой или наличными.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88padding:5px 8px;border:1px solid rgba(237,230,218,0.2)">Онлайн-оплаты нет</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88padding:5px 8px;border:1px solid rgba(237,230,218,0.2)">Бронь — 3 дня</span></div>
+    </div>
+  </div>
+  <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:1px;background:rgba(237,230,218,0.14);border:1px solid rgba(237,230,218,0.14)">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+      <div style="background:{{ p.bg }};display:flex;flex-direction:column;gap:14px;padding:14px;transition:background .15s">
+        <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#101A21 0 10px,#0B1319 10px 20px);display:flex;align-items:center;justify-content:center;position:relative;border:1px solid rgba(237,230,218,0.1)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88background:#0B1319;padding:4px 8px">фото товара</span>
+          <span style="position:absolute;top:10px;left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#938F88">{{ p.num }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;flex:1 1 auto">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ p.brand }} · {{ p.vol }}</span>
+          <span style="font-family:'Prata',serif;font-weight:400;font-size:16px;line-height:1.3">{{ p.name }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;white-space:nowrap">{{ p.priceLabel }}</span>
+          <sc-if value="{{ p.inCart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;border:1px solid #C9202A;background:#C9202A;color:#fff">
+              <button onClick="{{ p.dec }}" aria-label="Убрать одну" style="width:40px;height:40px;background:none;border:0;color:inherit;font-size:18px;cursor:pointer">−</button>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:14px;min-width:20px;text-align:center">{{ p.qty }}</span>
+              <button onClick="{{ p.inc }}" aria-label="Добавить ещё" style="width:40px;height:40px;background:none;border:0;color:inherit;font-size:18px;cursor:pointer">+</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ p.notInCart }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ p.inc }}" style="height:40px;padding:0 14px;border:1px solid rgba(237,230,218,0.3);background:transparent;color:#EDE6DA;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer" style-hover="border-color:#EDE6DA">Отложить</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="loyalty" data-screen-label="Бонусы и кабинет" style="background:#101A21;padding:clamp(56px,8vw,120px) clamp(14px,3vw,32px);border-top:1px solid rgba(237,230,218,0.14)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px 48px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Бонусы</span>
+      <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(34px,5vw,72px);line-height:0.95;text-transform:uppercase">Личный<br>кабинет</h2>
+    </div>
+    <p style="margin:0;font-size:16px;line-height:1.5;color:#B3ADA3;max-width:460px;text-wrap:pretty">Вход по номеру телефона, без пароля. Бонусы начисляются после каждого визита и покупки — ими можно оплатить часть следующего чека.</p>
+  </div>
+  <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:rgba(237,230,218,0.14);border:1px solid rgba(237,230,218,0.14)">
+    <div style="background:#101A21;padding:24px 20px 28px;display:flex;flex-direction:column;gap:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:clamp(40px,5vw,64px);font-weight:500;line-height:1;color:#C9202A">5%</span><span style="font-size:15px;line-height:1.5;color:#CFC9BE">от каждого чека возвращается бонусами — за услуги и товары</span></div>
+    <div style="background:#101A21;padding:24px 20px 28px;display:flex;flex-direction:column;gap:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:clamp(40px,5vw,64px);font-weight:500;line-height:1;color:#C9202A">30%</span><span style="font-size:15px;line-height:1.5;color:#CFC9BE">чека можно оплатить бонусами при следующем визите</span></div>
+    <div style="background:#101A21;padding:24px 20px 28px;display:flex;flex-direction:column;gap:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:clamp(40px,5vw,64px);font-weight:500;line-height:1;color:#C9202A">1 клик</span><span style="font-size:15px;line-height:1.5;color:#CFC9BE">история визитов, повтор записи и отложенные товары — в кабинете</span></div>
+  </div>
+  <div style="margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px">
+    <button onClick="{{ openCab }}" style="height:60px;padding:0 28px;background:#EDE6DA;color:#0B1319;border:0;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer" style-hover="background:#C9202A;color:#fff">{{ cabCta }}</button>
+    
+  </div>
+</section>
+
 <section id="contacts" data-screen-label="Контакты" style="background:#101A21;padding:clamp(56px,8vw,120px) clamp(14px,3vw,32px);border-top:1px solid rgba(237,230,218,0.14)">
   <div style="display:flex;flex-direction:column;gap:14px">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">04 / Контакты</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Контакты</span>
     <h2 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(34px,5vw,72px);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase">Как нас найти</h2>
+  </div>
+  <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">
+    <sc-for list="{{ locCards }}" as="l" hint-placeholder-count="2">
+      <button onClick="{{ l.onPick }}" style="height:48px;padding:0 16px;background:{{ l.tabBg }};color:{{ l.tabColor }};border:1px solid {{ l.tabBorder }};font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap">{{ l.name }} · {{ l.addr }}</button>
+    </sc-for>
   </div>
   <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(10px,1.5vw,20px);align-items:stretch">
     <div style="display:grid;grid-template-columns:1fr;border-top:1px solid rgba(237,230,218,0.18)">
       <div style="padding:20px 0;border-bottom:1px solid rgba(237,230,218,0.12);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline">
         <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88">Адрес</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px dashed rgba(237,230,218,0.3);padding:8px 10px">[Город, улица, дом]</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px solid rgba(237,230,218,0.3);padding:8px 10px">{{ locAddrFull }}</span>
       </div>
       <div style="padding:20px 0;border-bottom:1px solid rgba(237,230,218,0.12);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline">
         <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88">Часы</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px dashed rgba(237,230,218,0.3);padding:8px 10px">[Пн–Вс, с … до …]</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px solid rgba(237,230,218,0.3);padding:8px 10px">{{ locHours }}</span>
       </div>
       <div style="padding:20px 0;border-bottom:1px solid rgba(237,230,218,0.12);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline">
         <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88">Телефон</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px dashed rgba(237,230,218,0.3);padding:8px 10px">[+7 …]</span>
+        <a href="{{ locTel }}" style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFC9BE;border:1px solid rgba(237,230,218,0.3);padding:8px 10px;text-decoration:underline;text-underline-offset:3px">{{ locPhone }}</a>
       </div>
       <div style="padding:20px 0;border-bottom:1px solid rgba(237,230,218,0.12);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline">
         <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#938F88">Соцсети</span>
@@ -204,7 +260,7 @@ button,input,textarea{font-family:inherit}
       </div>
     </div>
     <div style="min-height:280px;background:repeating-linear-gradient(135deg,#0E1316 0 10px,#121A1E 10px 20px);border:1px solid rgba(237,230,218,0.14);display:flex;align-items:center;justify-content:center">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;background:#101A21;padding:6px 10px">карта / схема проезда</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B3ADA3;background:#101A21;padding:6px 10px">карта · {{ locAddrFull }}</span>
     </div>
   </div>
 </section>
@@ -231,6 +287,18 @@ button,input,textarea{font-family:inherit}
   </div>
   <div aria-hidden="true" style="margin-top:32px;font-family:'Prata',serif;font-weight:400;font-size:clamp(36px,9.4vw,170px);line-height:0.85;letter-spacing:0;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(237,230,218,0.28);white-space:nowrap;user-select:none">Man's World</div>
 </footer>
+
+<sc-if value="{{ showCartBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:{{ cartBottom }};z-index:44;padding:0 12px;transition:bottom .2s">
+    <div style="max-width:640px;margin:0 auto;background:#101A21;color:#EDE6DA;border:1px solid rgba(237,230,218,0.22);display:flex;align-items:center;gap:14px;padding:10px 10px 10px 18px;box-shadow:0 20px 60px rgba(0,0,0,0.6);animation:mwUp .3s ease">
+      <div style="flex:1 1 auto;display:flex;flex-direction:column;gap:2px;min-width:0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ cartCountLabel }} · магазин</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:500">{{ cartTotalLabel }}</span>
+      </div>
+      <button onClick="{{ openCart }}" style="height:52px;padding:0 20px;background:#EDE6DA;color:#0B1319;border:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap" style-hover="background:#C9202A;color:#fff">Отложить →</button>
+    </div>
+  </div>
+</sc-if>
 
 <sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;left:0;right:0;bottom:0;z-index:45;padding:0 12px calc(12px + env(safe-area-inset-bottom))">
@@ -277,6 +345,10 @@ button,input,textarea{font-family:inherit}
 
         <sc-if value="{{ isTime }}" hint-placeholder-val="{{ false }}">
           <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(26px,4vw,34px);line-height:1;letter-spacing:0.01em;text-transform:uppercase">Когда удобно?</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(237,230,218,0.14)">
+            <span style="flex:1;font-size:15px;min-width:0">{{ locName }} <span style="color:#938F88">· {{ locAddr }}</span></span>
+            <button onClick="{{ openLoc }}" style="background:none;border:0;padding:8px 0;color:#B3ADA3;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Сменить</button>
+          </div>
           <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid rgba(237,230,218,0.14)">
             <img src="{{ masterPhoto }}" alt="{{ masterName }}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;display:block"></img>
             <span style="flex:1;font-size:15px">{{ masterName }} <span style="color:#938F88">· {{ masterRole }}</span></span>
@@ -309,6 +381,10 @@ button,input,textarea{font-family:inherit}
 
         <sc-if value="{{ isContacts }}" hint-placeholder-val="{{ false }}">
           <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;font-size:clamp(26px,4vw,34px);line-height:1;letter-spacing:0.01em;text-transform:uppercase">Подтверждение</h3>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(237,230,218,0.14)">
+            <span style="flex:1;font-size:15px;min-width:0">{{ locName }} <span style="color:#938F88">· {{ locAddr }}</span></span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">барбершоп</span>
+          </div>
           <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
             <sc-for list="{{ selList }}" as="x" hint-placeholder-count="2">
               <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-size:15px">
@@ -378,6 +454,172 @@ button,input,textarea{font-family:inherit}
   </div>
 </sc-if>
 
+<sc-if value="{{ locModal }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:55;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px;animation:mwFade .2s ease">
+    <div role="dialog" aria-label="Выбор барбершопа" style="width:100%;max-width:720px;max-height:calc(100svh - 32px);overflow-y:auto;background:#101A21;border:1px solid rgba(237,230,218,0.14);padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:22px;animation:mwSheet .3s cubic-bezier(.2,.7,.2,1);position:relative">
+      <sc-if value="{{ locCanClose }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ closeLoc }}" aria-label="Закрыть" style="position:absolute;top:8px;right:8px;width:44px;height:44px;background:none;border:0;color:#EDE6DA;font-size:20px;cursor:pointer">✕</button>
+      </sc-if>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9202A">Санкт-Петербург · 2 адреса</span>
+      <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(30px,5vw,48px);line-height:1;text-transform:uppercase">Где стрижёмся?</h3>
+      <p style="margin:0;font-size:16px;line-height:1.5;color:#B3ADA3;max-width:520px;text-wrap:pretty">Выберите барбершоп — покажем его часы, телефон и запись к мастерам. Поменять можно в любой момент.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:rgba(237,230,218,0.14);border:1px solid rgba(237,230,218,0.14)">
+        <sc-for list="{{ locCards }}" as="l" hint-placeholder-count="2">
+          <button onClick="{{ l.onPick }}" style="background:{{ l.bg }};padding:20px;text-align:left;border:0;color:#EDE6DA;display:flex;flex-direction:column;align-items:flex-start;gap:10px;cursor:pointer;min-height:200px" style-hover="background:#0B1319">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#C9202A">{{ l.metro }}</span>
+            <span style="font-family:'Prata',serif;font-weight:400;font-size:22px;line-height:1.2">{{ l.addr }}</span>
+            <span style="font-size:14px;color:#B3ADA3">{{ l.hours }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#938F88">{{ l.phone }}</span>
+            
+            <span style="margin-top:auto;padding-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#EDE6DA;border-bottom:1px solid #EDE6DA">{{ l.cta }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ xOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ xClose }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;animation:mwFade .2s ease">
+    <div onClick="{{ stop }}" role="dialog" aria-label="{{ xLabel }}" style="width:100%;max-width:560px;height:min(92svh,860px);background:#101A21;display:flex;flex-direction:column;border:1px solid rgba(237,230,218,0.14);border-bottom:0;animation:mwSheet .3s cubic-bezier(.2,.7,.2,1)">
+      <div style="flex:0 0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px;border-bottom:1px solid rgba(237,230,218,0.12)">
+        <button onClick="{{ xBack }}" aria-label="Назад" style="width:44px;height:44px;background:none;border:0;color:#EDE6DA;font-size:20px;cursor:pointer;visibility:{{ xBackVis }}">←</button>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#938F88">{{ xLabel }}</span>
+        <button onClick="{{ xClose }}" aria-label="Закрыть" style="width:44px;height:44px;background:none;border:0;color:#EDE6DA;font-size:20px;cursor:pointer">✕</button>
+      </div>
+      <div style="flex:0 0 auto;height:2px;background:rgba(237,230,218,0.1)"><div style="height:100%;background:#C9202A;width:{{ xProgress }};transition:width .3s"></div></div>
+      <div style="flex:1 1 auto;overflow-y:auto;padding:24px clamp(16px,4vw,28px) 28px;display:flex;flex-direction:column;gap:24px">
+
+        <sc-if value="{{ isCartList }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">Отложить товары</h3>
+          <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
+            <sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12)">
+                <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:15px">{{ c.name }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ c.vol }} · {{ c.priceLabel }}</span></span>
+                <span style="display:flex;align-items:center;border:1px solid rgba(237,230,218,0.22)"><button onClick="{{ c.dec }}" aria-label="Убрать одну" style="width:36px;height:36px;background:none;border:0;color:#EDE6DA;font-size:16px;cursor:pointer">−</button><span style="font-family:'JetBrains Mono',monospace;font-size:14px;min-width:20px;text-align:center">{{ c.qty }}</span><button onClick="{{ c.inc }}" aria-label="Добавить ещё" style="width:36px;height:36px;background:none;border:0;color:#EDE6DA;font-size:16px;cursor:pointer">+</button></span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:15px;white-space:nowrap;min-width:72px;text-align:right">{{ c.lineLabel }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#938F88;padding:12px 14px;border:1px solid rgba(237,230,218,0.14)">Онлайн-оплаты нет: платите при получении в барбершопе, картой или наличными. Отложим товары на 3 дня — заберите сами или вместе с визитом.</p>
+        </sc-if>
+
+        <sc-if value="{{ isCartForm }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">Кто заберёт?</h3>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.12em">Имя</span>
+              <input value="{{ xName }}" onChange="{{ onXName }}" autocomplete="name" placeholder="Как к вам обращаться" style="height:54px;padding:0 14px;background:#0B1319;color:#EDE6DA;border:1px solid {{ xNameBorder }};font-size:16px;outline:none" style-focus="border-color:#EDE6DA"></input>
+              <sc-if value="{{ xNameErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#FF6B70">Укажите имя</span></sc-if>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.12em">Телефон</span>
+              <input value="{{ xPhone }}" onChange="{{ onXPhone }}" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" style="height:54px;padding:0 14px;background:#0B1319;color:#EDE6DA;border:1px solid {{ xPhoneBorder }};font-size:16px;outline:none;font-family:'JetBrains Mono',monospace;" style-focus="border-color:#EDE6DA"></input>
+              <sc-if value="{{ xPhoneErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#FF6B70">Введите номер полностью</span></sc-if>
+            </label>
+          </div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
+            <sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-size:15px"><span>{{ c.name }} × {{ c.qty }}</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">{{ c.lineLabel }}</span></div>
+            </sc-for>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;font-size:14px;color:#938F88"><span>К оплате при получении</span><span style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#EDE6DA">{{ cartTotalLabel }}</span></div>
+          </div>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#6E777B">Отправляя заявку, вы соглашаетесь с <a href="#" style="color:#938F88;text-decoration:underline">политикой обработки персональных данных</a>.</p>
+        </sc-if>
+
+        <sc-if value="{{ isCartDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:20px;animation:mwUp .35s ease both">
+            <span style="width:56px;height:56px;background:#C9202A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px">✓</span>
+            <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">Товары отложены</h3>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#CFC9BE">{{ orderDoneText }}</p>
+            <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
+              <sc-for list="{{ lastOrderItems }}" as="c" hint-placeholder-count="2">
+                <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-size:15px"><span>{{ c.name }} × {{ c.qty }}</span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">{{ c.lineLabel }}</span></div>
+              </sc-for>
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;font-size:14px;color:#938F88"><span>Оплата при получении</span><span style="color:#EDE6DA;font-family:'JetBrains Mono',monospace;font-size:16px">{{ lastOrderTotal }}</span></div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCabPhone }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">Вход в кабинет</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#CFC9BE">Введите номер — пришлём код в СМС. Пароль не нужен.</p>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.12em">Телефон</span>
+            <input value="{{ xPhone }}" onChange="{{ onXPhone }}" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" style="height:54px;padding:0 14px;background:#0B1319;color:#EDE6DA;border:1px solid {{ xPhoneBorder }};font-size:16px;outline:none;font-family:'JetBrains Mono',monospace;" style-focus="border-color:#EDE6DA"></input>
+            <sc-if value="{{ xPhoneErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#FF6B70">Введите номер полностью</span></sc-if>
+          </label>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#6E777B">Продолжая, вы соглашаетесь с <a href="#" style="color:#938F88;text-decoration:underline">политикой обработки персональных данных</a>.</p>
+        </sc-if>
+
+        <sc-if value="{{ isCabCode }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">Код из СМС</h3>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#CFC9BE">Отправили на {{ xPhone }}. <button onClick="{{ xBack }}" style="background:none;border:0;padding:0;color:#938F88;font-size:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Изменить номер</button></p>
+          <input value="{{ xCode }}" onChange="{{ onXCode }}" inputmode="numeric" maxLength="4" placeholder="••••" autoFocus="{{ true }}" style="height:72px;width:100%;max-width:240px;padding:0 14px;background:#0B1319;color:#EDE6DA;border:1px solid {{ xCodeBorder }};font-family:'JetBrains Mono',monospace;font-size:32px;letter-spacing:0.5em;text-align:center;outline:none" style-focus="border-color:#EDE6DA"></input>
+          <sc-if value="{{ xCodeErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#FF6B70">Введите 4 цифры</span></sc-if>
+          
+        </sc-if>
+
+        <sc-if value="{{ isCabHome }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-family:'Prata',serif;font-weight:400;letter-spacing:0.01em;font-size:clamp(26px,4vw,34px);line-height:1;text-transform:uppercase">{{ userGreeting }}</h3><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#938F88">{{ userPhone }}</span></div>
+            <button onClick="{{ logout }}" style="background:none;border:0;padding:8px 0;color:#938F88;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap">Выйти</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.14em">Мой барбершоп</span>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(237,230,218,0.14)">
+            <span style="flex:1;font-size:15px;min-width:0">{{ locName }} <span style="color:#938F88">· {{ locAddr }}</span></span>
+            <button onClick="{{ openLoc }}" style="background:none;border:0;padding:8px 0;color:#B3ADA3;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Сменить</button>
+          </div>
+          </div>
+          <div style="background:#C9202A;color:#fff;padding:22px 20px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85">Бонусы</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85">{{ userLevel }}</span></div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:500;line-height:1">{{ userBonus }}</span>
+            <span style="font-size:14px;line-height:1.45;opacity:0.9">1 бонус = 1 ₽ · оплачивайте до 30% чека · сгорают через 12 месяцев без визитов</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.14em">Ближайшая запись</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1px solid rgba(237,230,218,0.14)">
+              <span style="font-size:15px;color:#CFC9BE">Записей пока нет</span>
+              <button onClick="{{ cabBook }}" style="height:40px;padding:0 14px;background:#EDE6DA;color:#0B1319;border:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Записаться</button>
+            </div>
+          </div>
+          <sc-if value="{{ hasOrders }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.14em">Отложенные товары</span>
+              <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
+                <sc-for list="{{ orders }}" as="o" hint-placeholder-count="1">
+                  <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-size:15px;align-items:center"><span style="display:flex;flex-direction:column;gap:3px"><span>{{ o.title }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">до {{ o.until }} · оплата при получении</span></span><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">{{ o.totalLabel }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:center"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88letter-spacing:0.14em">История визитов</span></div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid rgba(237,230,218,0.18)">
+              <sc-for list="{{ visits }}" as="v" hint-placeholder-count="3">
+                <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(237,230,218,0.12);font-size:15px;align-items:center"><span style="display:flex;flex-direction:column;gap:3px"><span>{{ v.what }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ v.d }} · {{ v.master }}</span></span><span style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span style="font-family:'JetBrains Mono',monospace;white-space:nowrap">{{ v.sumLabel }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#C9202A">{{ v.bonusLabel }}</span></span></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ xHasPrimary }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:0 0 auto;padding:12px clamp(16px,4vw,28px) calc(12px + env(safe-area-inset-bottom));border-top:1px solid rgba(237,230,218,0.12);display:flex;align-items:center;gap:14px;background:#101A21">
+          <sc-if value="{{ xFootTotal }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:2px;flex:1 1 auto">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#938F88">{{ cartCountLabel }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:500">{{ cartTotalLabel }}</span>
+            </div>
+          </sc-if>
+          <button onClick="{{ xPrimary }}" style="flex:1 1 auto;height:54px;border:0;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;background:{{ xPrimaryBg }};color:{{ xPrimaryColor }}">{{ xPrimaryLabel }}</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
 <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:60;background:rgba(11,19,25,0.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:56px 12px 24px;animation:mwFade .2s ease">
     <button onClick="{{ lbClose }}" aria-label="Закрыть" style="position:absolute;top:8px;right:8px;width:48px;height:48px;background:none;border:0;color:#EDE6DA;font-size:22px;cursor:pointer">✕</button>
@@ -431,7 +673,7 @@ const MASTERS = [
   { id: 'petros', name: 'Петрос', role: 'Премиум-барбер', rating: '5,0', votes: '272 оценки', photo: 'assets/petros.png' }
 ];
 const TODO = [
-  'Адрес, телефон, часы работы, ссылки на соцсети и карты.',
+  'Адреса взяты из каталогов (Zoon, 2ГИС): Купчинская ул., 34 к1 (м. Купчино) и ул. Савушкина, 9 (м. Чёрная речка) — второй в каталоге значится как «Men`s Cuts», подтвердить принадлежность к сети и его телефон. Часы 10:00–22:00 — со слов заказчика, уточнить. Соцсети и ссылки на карты.',
   'Специалисты: в источнике указан один — Петрос (Премиум-барбер, 5,0 · 272 оценки). Фото взято из скриншота в низком качестве — нужен оригинал. Если мастеров больше — добавить их и цены их категорий.',
   'Длительность каждой услуги и рабочие часы — без них расписание на сайте остаётся демонстрационным, слоты не рассчитываются.',
   '«Патчи»: цена на скриншоте видна частично (читается как 400 ₽), описания нет — подтвердить.',
@@ -439,7 +681,9 @@ const TODO = [
   'Полные тексты описаний услуг — в источнике они обрезаны.',
   'Права на фотографии из картографического сервиса: элементы интерфейса карт обрезаны, водяных знаков не обнаружено, но использование нужно согласовать с владельцем снимков.',
   'Политика обработки персональных данных и то, кто и как подтверждает заявки.',
-  'Логотип в высоком разрешении или вектор (сейчас растр 1254 px).'
+  'Логотип в высоком разрешении или вектор (сейчас растр 1254 px).',
+  'Магазин: реальный ассортимент, бренды, объёмы, цены и фото товаров; кто подтверждает бронь и сколько дней товар держат (сейчас — 3 дня). Онлайн-оплаты по условию нет — только при получении.',
+  'Программа лояльности: процент начисления (сейчас 5%), лимит списания (30%), срок сгорания (12 мес.), стартовый бонус; СМС-шлюз для входа по номеру. Баланс и история в кабинете — демо-данные.'
 ];
 const DOW = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
@@ -449,11 +693,48 @@ const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, NB) + NB + '₽';
 const plural = (n, f) => { const a = n % 10, b = n % 100; return f[(a === 1 && b !== 11) ? 0 : (a >= 2 && a <= 4 && (b < 10 || b >= 20)) ? 1 : 2]; };
 const CHIPS = 53;
 
+const PRODUCTS = [
+  { id: 'sh', brand: '[Бренд]', name: 'Шампунь для ежедневного ухода', vol: '250 мл', price: 1500 },
+  { id: 'oil', brand: '[Бренд]', name: 'Масло для бороды', vol: '30 мл', price: 1200 },
+  { id: 'balm', brand: '[Бренд]', name: 'Бальзам для бороды', vol: '50 мл', price: 1100 },
+  { id: 'clay', brand: '[Бренд]', name: 'Матовая глина для укладки', vol: '100 мл', price: 1400 },
+  { id: 'pom', brand: '[Бренд]', name: 'Помада на водной основе', vol: '100 мл', price: 1300 },
+  { id: 'spray', brand: '[Бренд]', name: 'Солевой спрей для объёма', vol: '150 мл', price: 1000 }
+];
+const VISITS = [
+  { d: '14 октября', what: 'Стрижка + Борода', master: 'Петрос', sum: 3700, bonus: 185 },
+  { d: '9 сентября', what: 'Мужская стрижка', master: 'Петрос', sum: 2400, bonus: 120 },
+  { d: '2 августа', what: 'Королевское бритьё лица', master: 'Петрос', sum: 2200, bonus: 110 }
+];
+const X_ACC = '#C9202A', X_ACCFG = '#fff', X_LINE = 'rgba(237,230,218,0.22)', X_FG = '#EDE6DA', X_BG = '#0B1319', X_BG2 = '#101A21';
+const lsGet = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const fmtPhone = v => {
+  let d = v.replace(/\D/g, '');
+  if (!d) return '';
+  if (d[0] === '8') d = '7' + d.slice(1);
+  if (d[0] !== '7') d = '7' + d;
+  const p = d.slice(1, 11);
+  let out = '+7';
+  if (p.length) out += ' (' + p.slice(0, 3);
+  if (p.length > 3) out += ') ' + p.slice(3, 6);
+  if (p.length > 6) out += '-' + p.slice(6, 8);
+  if (p.length > 8) out += '-' + p.slice(8, 10);
+  return out;
+};
+const LOCATIONS = [
+  { id: 'kupchino', name: 'Купчино', addr: 'Купчинская ул., 34, корп. 1', full: 'Санкт-Петербург, Купчинская ул., 34, корп. 1', metro: 'м. Купчино · Дунайская', hours: 'Пн–Вс 10:00–22:00', phone: '+7 (962) 704-07-70', tel: '+79627040770' },
+  { id: 'savushkina', name: 'Чёрная речка', addr: 'ул. Савушкина, 9', full: 'Санкт-Петербург, ул. Савушкина, 9', metro: 'м. Чёрная речка', hours: 'Пн–Вс 10:00–22:00', phone: '+7 (962) 704-07-70', tel: '+79627040770', verify: true }
+];
+const QP = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams('');
+const PREVIEW = QP.has('step') || QP.has('x') || (QP.has('loc') && QP.get('loc') !== 'pick');
+const EXTRA_STATE = { loc: lsGet('mw-loc', null), locOpen: false, cart: {}, x: null, xStep: 0, xName: '', xPhone: '', xCode: '', xTried: false, user: lsGet('mw-user', null), orders: lsGet('mw-orders', []), lastOrder: null };
+
 class Component extends DCLogic {
-  state = { sel: {}, desc: {}, sheet: false, step: 0, master: null, di: 0, time: null, name: '', phone: '', comment: '', tried: false, lb: null, active: 'cuts', wide: typeof window !== 'undefined' ? window.innerWidth >= 900 : true };
+  state = { ...EXTRA_STATE, sel: {}, desc: {}, sheet: false, step: 0, master: null, di: 0, time: null, name: '', phone: '', comment: '', tried: false, lb: null, active: 'cuts', wide: typeof window !== 'undefined' ? window.innerWidth >= 1000 : true };
 
   componentDidMount() {
-    this.onResize = () => { const w = window.innerWidth >= 900; if (w !== this.state.wide) this.setState({ wide: w }); };
+    this.onResize = () => { const w = window.innerWidth >= 1000; if (w !== this.state.wide) this.setState({ wide: w }); };
     this.onScroll = () => {
       let act = GROUPS[0].id;
       for (const g of GROUPS) { const el = document.getElementById('grp-' + g.id); if (el && el.getBoundingClientRect().top <= CHIPS + 40) act = g.id; }
@@ -465,6 +746,7 @@ class Component extends DCLogic {
     window.addEventListener('keydown', this.onKey);
     this.onResize();
     this.applyPreview();
+    this.xPreview();
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
@@ -474,7 +756,7 @@ class Component extends DCLogic {
   }
   componentDidUpdate(prev) {
     if (prev.previewStep !== this.props.previewStep) this.applyPreview();
-    document.body.style.overflow = (this.state.sheet || this.state.lb !== null) ? 'hidden' : '';
+    document.body.style.overflow = (this.state.sheet || this.state.x || this.state.lb !== null) ? 'hidden' : '';
   }
   applyPreview() {
     const qp = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('step') : null;
@@ -500,7 +782,7 @@ class Component extends DCLogic {
   days() { const out = []; const now = new Date(); for (let i = 0; i < 14; i++) out.push(new Date(now.getFullYear(), now.getMonth(), now.getDate() + i)); return out; }
   timesFor(di) {
     const list = []; const now = new Date();
-    for (let h = 10; h <= 20; h++) for (const m of [0, 30]) {
+    for (let h = 10; h <= 21; h++) for (const m of [0, 30]) {
       if (di === 0 && (h * 60 + m) <= now.getHours() * 60 + now.getMinutes() + 30) continue;
       list.push(String(h).padStart(2, '0') + ':' + (m ? '30' : '00'));
     }
@@ -508,6 +790,117 @@ class Component extends DCLogic {
   }
   close() { this.setState({ sheet: false, tried: false }); }
   lbStep(dir) { this.setState(s => ({ lb: (s.lb + dir + GALLERY.length) % GALLERY.length })); }
+
+  effLoc() {
+    const s = this.state;
+    const q = QP.get('loc');
+    if (q && q !== 'pick') return q;
+    if (q === 'pick') return s.pickedInPreview || null;
+    return s.loc || (s.user && s.user.loc) || (PREVIEW ? 'kupchino' : null);
+  }
+  pickLoc(id) {
+    if (QP.get('loc') === 'pick') { this.setState({ pickedInPreview: id, locOpen: false }); return; }
+    lsSet('mw-loc', id);
+    this.setState(st => { const user = st.user ? { ...st.user, loc: id } : st.user; if (user) lsSet('mw-user', user); return { loc: id, locOpen: false, user }; });
+  }
+  locVals() {
+    const s = this.state;
+    const id = this.effLoc();
+    const L = LOCATIONS.find(l => l.id === id) || null;
+    const todoOn = this.props.showTodo ?? true;
+    const forcePick = QP.get('loc') === 'pick' && !s.pickedInPreview;
+    return {
+      locModal: s.locOpen || !L || forcePick,
+      locCanClose: !!L && !forcePick,
+      openLoc: () => this.setState({ locOpen: true }),
+      closeLoc: () => this.setState({ locOpen: false }),
+      locName: L ? L.name : 'Адрес', locShort: L ? L.metro.split(' · ')[0] + ' · ' + L.addr : '', locAddr: L ? L.addr : '', locAddrFull: L ? L.full : '',
+      locHours: L ? L.hours : 'Пн–Вс 10:00–22:00', locPhone: L ? L.phone : '', locTel: L ? 'tel:' + L.tel : '#',
+      locCards: LOCATIONS.map(l => { const on = L && L.id === l.id; return { ...l, showVerify: !!l.verify && todoOn, cta: on ? 'Выбрано ✓' : 'Выбрать →', bg: on ? X_BG : X_BG2, tabBg: on ? X_FG : 'transparent', tabColor: on ? X_BG : X_FG, tabBorder: on ? X_FG : X_LINE, onPick: () => this.pickLoc(l.id) }; })
+    };
+  }
+  xPreview() {
+    const q = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('x') : null;
+    if (!q) return;
+    if (q === 'shop') this.setState({ cart: { oil: 1, clay: 1 } });
+    if (q === 'cart') this.setState({ cart: { oil: 1, clay: 1 }, x: 'cart', xStep: 0 });
+    if (q === 'cab') this.setState({ user: { name: 'Алексей', phone: '+7 (900) 123-45-67' }, x: 'cab', xStep: 2 });
+    if (q === 'login') this.setState({ x: 'cab', xStep: 0 });
+  }
+  xClose() { this.setState({ x: null, xTried: false, xCode: '' }); }
+  extraVals() {
+    const s = this.state;
+    const todoOn = this.props.showTodo ?? true;
+    const user = s.user;
+    const hasSel = Object.keys(s.sel).some(k => s.sel[k]);
+    const cartList = PRODUCTS.filter(p => s.cart[p.id] > 0).map(p => ({ ...p, qty: s.cart[p.id], line: p.price * s.cart[p.id] }));
+    const cartCount = cartList.reduce((a, c) => a + c.qty, 0);
+    const cartTotal = cartList.reduce((a, c) => a + c.line, 0);
+    const setQty = (id, d) => this.setState(st => { const q = Math.max(0, (st.cart[id] || 0) + d); const cart = { ...st.cart }; if (q) cart[id] = q; else delete cart[id]; return { cart }; });
+    const ctl = p => ({ inc: e => { e && e.stopPropagation && e.stopPropagation(); setQty(p.id, 1); }, dec: e => { e && e.stopPropagation && e.stopPropagation(); setQty(p.id, -1); } });
+    const phoneOk = s.xPhone.replace(/\D/g, '').length === 11;
+    const nameOk = s.xName.trim().length >= 2;
+    const codeOk = /^\d{4}$/.test(s.xCode);
+    const x = s.x, st = s.xStep;
+    const isCart = x === 'cart', isCab = x === 'cab';
+    let xLabel = '', xProgress = '0%', xPrimaryLabel = '', xPrimary = () => {}, enabled = true, xHasPrimary = true, xBackVis = 'hidden';
+    if (isCart) {
+      xLabel = st === 0 ? '01 / 02 · Товары' : st === 1 ? '02 / 02 · Контакты' : 'Готово';
+      xProgress = st === 0 ? '50%' : '100%';
+      xBackVis = st === 1 ? 'visible' : 'hidden';
+      if (st === 0) { enabled = cartCount > 0; xPrimaryLabel = cartCount ? 'Далее →' : 'Корзина пуста'; xPrimary = () => { if (cartCount) this.setState({ xStep: 1, xName: user && user.name ? user.name : s.xName, xPhone: user ? user.phone : s.xPhone }); }; }
+      else if (st === 1) { xPrimaryLabel = 'Отложить без оплаты'; xPrimary = () => {
+        if (!(nameOk && phoneOk)) { this.setState({ xTried: true }); return; }
+        const until = new Date(); until.setDate(until.getDate() + 3);
+        const order = { title: cartList.map(c => c.name + (c.qty > 1 ? ' × ' + c.qty : '')).join(', '), until: until.getDate() + ' ' + MON[until.getMonth()], total: cartTotal, totalLabel: fmt(cartTotal), items: cartList.map(c => ({ name: c.name, qty: c.qty, lineLabel: fmt(c.line) })) };
+        const orders = [order, ...s.orders].slice(0, 5);
+        const nu = user ? { ...user, name: user.name || s.xName.trim() } : null;
+        lsSet('mw-orders', orders); if (nu) lsSet('mw-user', nu);
+        this.setState({ xStep: 2, xTried: false, orders, lastOrder: order, cart: {}, user: nu });
+      }; }
+      else { xPrimaryLabel = 'Готово'; xPrimary = () => this.xClose(); }
+    } else if (isCab) {
+      xLabel = st === 0 ? 'Вход · Телефон' : st === 1 ? 'Вход · Код' : 'Личный кабинет';
+      xProgress = st === 0 ? '33%' : st === 1 ? '66%' : '100%';
+      xBackVis = st === 1 ? 'visible' : 'hidden';
+      if (st === 0) { enabled = phoneOk; xPrimaryLabel = 'Получить код'; xPrimary = () => { if (phoneOk) this.setState({ xStep: 1, xTried: false }); else this.setState({ xTried: true }); }; }
+      else if (st === 1) { enabled = codeOk; xPrimaryLabel = 'Войти'; xPrimary = () => { if (!codeOk) { this.setState({ xTried: true }); return; } const nu = { phone: s.xPhone, name: s.xName.trim(), loc: this.effLoc() }; lsSet('mw-user', nu); this.setState({ user: nu, xStep: 2, xTried: false, xCode: '' }); }; }
+      else { xHasPrimary = false; }
+    }
+    const firstName = user && user.name ? user.name : '';
+    const bonus = 1240;
+    return {
+      cabLabel: user && s.wide ? 'Кабинет · ' + fmt(bonus) : 'Кабинет',
+      cabCta: user ? 'Открыть кабинет' : 'Войти по номеру телефона',
+      openCab: () => this.setState({ x: 'cab', xStep: user ? 2 : 0, xTried: false, xPhone: user ? user.phone : '', xCode: '' }),
+      openCart: () => this.setState({ x: 'cart', xStep: 0, xTried: false }),
+      goShop: e => { e.preventDefault(); this.scrollToId('shop'); },
+      goLoyalty: e => { e.preventDefault(); this.scrollToId('loyalty'); },
+      products: PRODUCTS.map((p, i) => { const q = s.cart[p.id] || 0; return { ...p, ...ctl(p), num: String(i + 1).padStart(2, '0'), priceLabel: fmt(p.price), qty: q, inCart: q > 0, notInCart: q === 0, bg: q > 0 ? X_BG2 : X_BG }; }),
+      showCartBar: cartCount > 0 && !s.sheet && !s.x && s.lb === null,
+      cartBottom: hasSel ? 'calc(96px + env(safe-area-inset-bottom))' : 'calc(12px + env(safe-area-inset-bottom))',
+      cartCountLabel: cartCount + ' ' + plural(cartCount, ['товар', 'товара', 'товаров']), cartTotalLabel: fmt(cartTotal),
+      cartItems: cartList.map(c => ({ ...c, ...ctl(c), priceLabel: fmt(c.price), lineLabel: fmt(c.line) })),
+      xOpen: !!x, xClose: () => this.xClose(), xLabel, xProgress, xBackVis,
+      xBack: () => this.setState(st2 => ({ xStep: Math.max(0, st2.xStep - 1), xTried: false })),
+      isCartList: isCart && st === 0, isCartForm: isCart && st === 1, isCartDone: isCart && st === 2,
+      isCabPhone: isCab && st === 0, isCabCode: isCab && st === 1, isCabHome: isCab && st === 2,
+      xHasPrimary, xFootTotal: isCart && st < 2, xPrimaryLabel, xPrimary,
+      xPrimaryBg: enabled ? X_ACC : 'rgba(128,128,128,0.15)', xPrimaryColor: enabled ? X_ACCFG : '#6E777B',
+      xName: s.xName, xPhone: s.xPhone, xCode: s.xCode,
+      onXName: e => this.setState({ xName: e.target.value }), onXPhone: e => this.setState({ xPhone: fmtPhone(e.target.value) }), onXCode: e => this.setState({ xCode: e.target.value.replace(/\D/g, '').slice(0, 4) }),
+      xNameErr: s.xTried && !nameOk, xPhoneErr: s.xTried && !phoneOk, xCodeErr: s.xTried && !codeOk,
+      xNameBorder: s.xTried && !nameOk ? '#FF6B70' : X_LINE, xPhoneBorder: s.xTried && !phoneOk ? '#FF6B70' : X_LINE, xCodeBorder: s.xTried && !codeOk ? '#FF6B70' : X_LINE,
+      orderDoneText: (s.xName.trim() ? s.xName.trim() + ', товары' : 'Товары') + ' отложены до ' + (s.lastOrder ? s.lastOrder.until : '') + '. Администратор подтвердит наличие по телефону ' + s.xPhone + '. Оплата — при получении в барбершопе, картой или наличными.',
+      lastOrderItems: s.lastOrder ? s.lastOrder.items : [], lastOrderTotal: s.lastOrder ? s.lastOrder.totalLabel : '',
+      userGreeting: firstName ? 'Привет, ' + firstName : 'Ваш кабинет', userPhone: user ? user.phone : '', userLevel: 'Постоянный гость · ' + VISITS.length + ' визита',
+      userBonus: fmt(bonus).replace(NB + '₽', ''),
+      logout: () => { lsSet('mw-user', null); this.setState({ user: null, x: null }); },
+      cabBook: () => { this.xClose(); setTimeout(() => this.scrollToId('services', 24), 50); },
+      hasOrders: s.orders.length > 0, orders: s.orders,
+      visits: VISITS.map(v => ({ ...v, sumLabel: fmt(v.sum), bonusLabel: '+' + v.bonus + ' бонусов' }))
+    };
+  }
 
   renderVals() {
     const s = this.state;
@@ -574,6 +967,8 @@ class Component extends DCLogic {
     const frameSrc = typeof window !== 'undefined' ? window.location.pathname + '?mw_mobile=1' : '';
 
     return {
+      ...this.extraVals(),
+      ...this.locVals(),
       mobileFrame, pageVisible: !mobileFrame, frameSrc, topInset: inFrame ? '44px' : '0px',
       wide: s.wide, showTodo: todoOn, ticker: TICKER,
       goTop: e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },

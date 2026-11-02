@@ -6,8 +6,7 @@
   - «Лента» (по умолчанию) — все слайды подряд, прокрутка сверху вниз как PDF;
   - «Слайды» — по одному слайду, стрелки ←/→ или тап по краям экрана. Прямая ссылка: `?view=slides`.
 - `mans-world-v3.dc.html` — основной прототип сайта (текущая версия).
-- `Man's World.dc.html`, `Man's World v2.dc.html` — предыдущие версии прототипа.
-- `variants/` — альтернативные варианты оформления v3 (editorial, grid, silver).
+- `variants/` — альтернативные варианты оформления v3: A Editorial, B Grid, C Silver, D Classic, E Bold.
 - `assets/`, `uploads/` — логотип, фотографии интерьера и работ.
 - `support.js`, `deck-stage.js`, `mw-live.js` — рантайм для `.dc.html` страниц и слайдов.
 
